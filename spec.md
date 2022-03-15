@@ -1,5 +1,15 @@
 # Design Spec
 
+## Development
+
+* MERN stack (MongoDB, Express, React, Node) 
+* Written with TypeScript
+* React and redux-toolkit
+* MaterialUI for layout
+* GitHub for code management
+* GitHub Actions for CI
+* Agile development - 2 week sprints
+
 ## Functionality
 
 ### Documentation (reading + writing)
