@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginView from 'src/views/LoginView/LoginView'
 import SignUpView from 'src/views/SignUpView/SignUpView'
-import HomeView from 'src/views/HomeView/HomeView'
+import ReviewView from 'src/views/ReviewView/ReviewView'
 import { BrowserRouter as Router,Routes, Route } from 'react-router-dom'
 import './App.scss';
 
@@ -12,7 +12,7 @@ function App() {
        <Routes>
        <Route path="/" element={<LoginView />} />
        <Route path="/signup" element={<SignUpView />} />
-       <Route path="/home" element={<HomeView />} />
+       <Route path="/review" element={<ReviewView />} />
        </Routes>
      </Router>
     </div>
