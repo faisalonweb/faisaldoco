@@ -1,0 +1,80 @@
+// ---------- FONTS ----------
+$montserrat: 'Montserrat-regular';
+$montserratBold: 'Montserrat-Bold';
+$montserratLight: 'Montserrat-Light';
+$montserratSemiBold: 'Montserrat-semibold';
+$montserratMedium: 'Montserrat-Medium';
+$montserratThick: 'Montserrat-thick';
+$lato: 'Lato';
+$latoLight: 'Lato-Thin';
+$latoBold: 'Lato-Bold';
+
+// ---------- COLORS ----------
+$orangeGradOpaque: linear-gradient(90deg, #F5286EE0 0%, #FC6D43E6 100%) !important;
+$orangeGrad: linear-gradient(90deg, #F5286E 0%, #FC6D43 100%);
+$greenGrad: linear-gradient(270deg, #76E672 0%, #41C83E 100%);
+$blueGrad: linear-gradient(207.38deg, #9BFAFC 0%, #175CAE 100%);
+$DuoMelonGrad: linear-gradient(27.38deg, #CE8FE8 0%, #FA8C81 100%);
+$SeaGrad: linear-gradient(27.38deg, #0FA0E1 0%, #53E7B3 100%);
+$purpleGrad: linear-gradient(212.77deg, #E1AFFF 5.42%, #8278E1 100%);
+$pinkGrad: linear-gradient(278.02deg, #FFFAFA 0.59%, #F2F3FA 99.54%);
+$greyGradient:  linear-gradient( 0deg , #F8F8F8, #F8F8F8), linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(90deg, #F5286E 0%, #FC6D43 88.61%);
+$black: #1E1F22;
+$darkGray: #78818B;
+$lightGray: #F8F8F8;
+$mediumGray: #8E8E93;
+$dullGray: #94A2B3;
+$txtGray: #767676;
+$orange: linear-gradient(270deg, #FE7878 -53.75%, #FF2828 130.49%);
+$white: #FFFFFF;
+$txtGrad: linear-gradient(67deg, #f5286e, #fc6d43);
+$red: #FF0000;
+$dullBlack: rgb(78, 77, 77);
+
+// ---------- DARK THEME ----------
+
+$primary-font-dark: #FFF;
+$secondary-font-dark: #e98c8c;
+$background-color-dark: #1E1F22;
+$foreground-color-dark: #151518;
+$background-dull-dark: #303237;
+$dull-content-dark: #aeb1b8;
+$sidebar-join-border-dark: #FFF;
+$sitemap-btn-border-dark: #aeb1b8;
+$drawer-overlay-dark: rgba(2, 2, 3, 0.5);
+
+// ---------- LIGHT THEME ----------
+
+$primary-font-light: $black;
+$secondary-font-light: #e98c8c;
+$background-color-light: $white;
+$foreground-color-light: #fff;
+$cta-tagline-color: #1E1F22;
+$form-error-msg-color: $red;
+$background-dull-light: $lightGray;
+$form-field-border-light: $black;
+$sidebar-join-light: $mediumGray;
+$sidebar-join-border-light: $black;
+$sidebar-signin-border: #F5286E;
+$filter-tab-font-light: $darkGray;
+$article-date-font-light: $dullBlack;
+$sitemap-btn-font-light: #F5286E;
+$sitemap-btn-border-light: $darkGray;
+$white-tagline-light: $white;
+$dull-content-light: $darkGray;
+$medium-gray-light: $mediumGray;
+$photo-overlay-light: #00000075;
+$footer-title-light: $txtGray;
+$drawer-overlay-light: rgba(0, 0, 0, 0.2);
+$modal-searchbar-light: #ebeced;
+$featured-guides-bg-light: linear-gradient(98.78deg, #FFFAFA 0.51%, #F2F3FA 99.1%);
+
+// ---------------------------------
+
+$header-height: 66px;
+$card-border-radius: 20px;
+
+//ipad and mobile width for media queries
+
+$media-ipad-width: 832px;
+$media-mobile-width: 480px;

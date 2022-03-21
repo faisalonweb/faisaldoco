@@ -9,39 +9,37 @@ import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import constantData from 'src/utils/constants/constant'
-import "src/components/common/Smart/LoginPage/LoginPage.scss"
-import { useSelector } from 'react-redux'
-import { RootState } from 'src/store/store';
 import {useNavigate} from 'react-router-dom';
-
-const theme = createTheme();
+import { checkValidEmail } from 'src/utils/helpers/helper'
+import { localizedData } from "src/utils/helpers/language";
+import { LocalizationInterface } from 'src/utils/helpers/interfaces/localizationinterfaces'
 
 export default function SignInSide() {
   let navigate = useNavigate();
+  const constantData: LocalizationInterface = localizedData();
   const [useremail, setUserEmail] = useState<any>("")
   const [userpassword, setUserPassword] = useState<any>("")
   const [email, setEmail] = useState("")
   const [emailError, setEmailError] = useState("");
+  const [emailPasswordError, setEmailPasswordError] = useState("");
   const [password, setPassword] = useState("")
   const [passwordError, setPasswordError] = useState("");
-  const { Login_Title, Remember_Me, Signin_Btn, Signup_Link } = constantData.LOGIN_PAGE;
-
-  const emailReg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/; 
+  const { Login_Title, Remember_Me, Signin_Btn, Signup_Link, Forgot_Password} = constantData.loginPage;
+  
 
   useEffect(() => {
     localStorage.setItem("useremail","default@gmail.com")
     localStorage.setItem("userpassword","default12");
+    getLocalState()
   },[]);
 
-    const handleEmail = (e:any) => {
-      if (emailReg.test(e.target.value) === true) {
+    const handleEmail = (e:React.ChangeEvent<HTMLInputElement>) => {
+      setEmail(e.target.value);
+      if (checkValidEmail(email)){
         setEmailError("");
       }
-      setEmail(e.target.value);
     };
-    const handlePassword = (e:any) => {
+    const handlePassword = (e:React.ChangeEvent<HTMLInputElement>) => {
       if (e.target.value.length) {
         setPasswordError("");
       }
@@ -53,7 +51,6 @@ export default function SignInSide() {
     };
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      getLocalState()
       handleErrors()
       if(verifyErrors()) {
       const data = new FormData(event.currentTarget);
@@ -61,22 +58,23 @@ export default function SignInSide() {
         email: data.get('email'),
         password: data.get('password'),
       });
-      if(email == useremail && password == userpassword) {
-           navigate('/review')
+      if(email === useremail && password === userpassword) {
+            navigate('/review')
       }
-      {
-           navigate('/')
+      else{
+            navigate('/')
+            setEmailPasswordError('Incorrect crendentials')
       }
       }
       else {
-        console.log("inverifyerro")
+        console.log("invalid data")
       }
       
     };
     const handleErrors = () => {
       !email
         ? setEmailError("Email is required.")
-        : emailReg.test(email) == false
+        : !checkValidEmail(email)
         ? setEmailError("Invalid Email.")
         : setEmailError("");
       !password
@@ -87,7 +85,7 @@ export default function SignInSide() {
       if 
         (
         email?.length &&
-        emailReg.test(email) == true &&
+        checkValidEmail(email) === true &&
         password?.length
       ) {
         return true;
@@ -95,7 +93,7 @@ export default function SignInSide() {
       return false;
     };
   return (
-    <ThemeProvider theme={theme}>
+    <>
      <CssBaseline />
       <Grid container component="main" sx={{ height: '100vh' }} style={{display:'flex', justifyContent:'center'}}>
           <Box
@@ -144,13 +142,16 @@ export default function SignInSide() {
                   autoComplete="current-password"
               />
               <p className="errorText">{passwordError}</p>
+              <p className="errorText">{emailPasswordError}</p>
                 </Grid>
               </Grid>
+              
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label={Remember_Me}
               />
               <Button
+                className="submit-button"
                 type="submit"
                 fullWidth
                 variant="contained"
@@ -161,7 +162,7 @@ export default function SignInSide() {
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">
-                    Forgot password?
+                    {Forgot_Password}
                   </Link>
                 </Grid>
                 <Grid item>
@@ -173,6 +174,6 @@ export default function SignInSide() {
             </Box>
           </Box>
       </Grid>
-    </ThemeProvider>
+      </>
   );
 }

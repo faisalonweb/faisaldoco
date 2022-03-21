@@ -3,20 +3,18 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import constantData from 'src/utils/constants/constant'
-import "src/components/common/Smart/SignUpPage/SignUpPage.scss"
+import { checkValidEmail, checkValidPassword } from 'src/utils/helpers/helper'
+import { localizedData } from "src/utils/helpers/language";
+import { LocalizationInterface } from 'src/utils/helpers/interfaces/localizationinterfaces'
 
-const theme = createTheme();
 
 export default function SignUp() {
+  const constantData: LocalizationInterface = localizedData();
   const [email, setEmail] = React.useState("")
   const [emailError, setEmailError] = React.useState("");
   const [password, setPassword] = React.useState("")
@@ -25,24 +23,19 @@ export default function SignUp() {
   const [firstnameError, setFirstNameError] = React.useState("");
   const [lastname, setLastName] = React.useState("");
   const [lastnameError, setLastNameError] = React.useState("");
-  const { Signup_Title, Signup_Btn, Signin_Link } = constantData.SIGNUP_PAGE;
-
-  const emailReg =
-    /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/; 
-  const passwordReg =
-       /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; 
+  const { Signup_Title, Signup_Btn, Signin_Link } = constantData.signUpPage;
 
   const handleEmail = (e:any) => {
-    if (emailReg.test(e.target.value) === true) {
+    setEmail(e.target.value);
+    if (checkValidEmail(email)) {
       setEmailError("");
     }
-    setEmail(e.target.value);
   };
   const handlePassword = (e:any) => {
-    if (passwordReg.test(e.target.value) === true) {
+    setPassword(e.target.value);
+    if (checkValidPassword(password)) {
       setPasswordError("");
     }
-    setPassword(e.target.value);
   };
   const handleFirstName = (e:any) => {
     if (e.target.value.length) {
@@ -75,12 +68,12 @@ export default function SignUp() {
   const handleErrors = () => {
     !email
       ? setEmailError("Email is required.")
-      : emailReg.test(email) == false
+      : !checkValidEmail(email)
       ? setEmailError("Invalid Email.")
       : setEmailError("");
     !password
       ? setPasswordError("Password is required.")
-      : password?.length !== 8
+      : !checkValidPassword(password)
       ? setPasswordError("Password must be eight characters, at least one letter and one number")
       : setPasswordError(""); 
       !firstname
@@ -96,9 +89,9 @@ export default function SignUp() {
       firstname &&
       lastname &&  
       email?.length &&
-      emailReg.test(email) == true &&
+      checkValidEmail(email) === true &&
       password?.length &&
-      password?.length == 8
+      checkValidPassword(password)
     ) {
       return true;
     }
@@ -106,7 +99,7 @@ export default function SignUp() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -203,6 +196,6 @@ export default function SignUp() {
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
+    </>
   );
 }
