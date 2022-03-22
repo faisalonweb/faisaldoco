@@ -1,0 +1,18 @@
+.Login-Page {
+    .inputs {
+        .inputs-section {
+            .errorText {
+                color: #ff1744;
+                font-size: 0.8rem;
+                margin-top: 0px;
+              }
+        }
+        .css-mhc70k-MuiGrid-root>.MuiGrid-item {
+            padding-top: 0;
+        }
+    .submit-button {
+        background-color: var(--submit-btn) !important;
+    }    
+    }
+   
+}
