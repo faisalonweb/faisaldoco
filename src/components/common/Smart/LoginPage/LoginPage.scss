@@ -2,7 +2,7 @@
     .inputs {
         .inputs-section {
             .errorText {
-                color: #ff1744;
+                color:  var(--error-text) !important;
                 font-size: 0.8rem;
                 margin-top: 0px;
               }
@@ -13,6 +13,12 @@
     .submit-button {
         background-color: var(--submit-btn) !important;
     }    
+    .forgot-link {
+        color:  var(--submit-btn) !important;
+    }
+    .signup-link {
+        color:  var(--submit-btn) !important;
+    }
     }
    
 }

@@ -25,26 +25,26 @@ export default function SignUp() {
   const [lastnameError, setLastNameError] = React.useState("");
   const { Signup_Title, Signup_Btn, Signin_Link } = constantData.signUpPage;
 
-  const handleEmail = (e:any) => {
+  const handleEmail = (e:React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
     if (checkValidEmail(email)) {
       setEmailError("");
     }
   };
-  const handlePassword = (e:any) => {
+  const handlePassword = (e:React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
     if (checkValidPassword(password)) {
       setPasswordError("");
     }
   };
-  const handleFirstName = (e:any) => {
+  const handleFirstName = (e:React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length) {
       setFirstNameError("");
     }
     setFirstName(e.target?.value);
   };
 
-  const handleLastName = (e:any) => {
+  const handleLastName = (e:React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length) {
       setLastNameError("");
     }
