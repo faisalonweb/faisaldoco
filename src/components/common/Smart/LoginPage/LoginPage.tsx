@@ -12,13 +12,10 @@ import Typography from '@mui/material/Typography';
 import {useNavigate} from 'react-router-dom';
 import { checkValidEmail } from 'src/utils/helpers/helper'
 import { localizedData } from "src/utils/helpers/language";
-import { LocalizationInterface } from 'src/utils/helpers/interfaces/localizationinterfaces'
-import { setLoggedInStatus } from 'src/store/reducers/userSlice'
-import { useAppDispatch } from "src/store/hooks";
+import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
 
 export default function SignInSide() {
   let navigate = useNavigate();
-  const dispatch = useAppDispatch();
   const constantData: LocalizationInterface = localizedData();
   const [useremail, setUserEmail] = useState<string | null>("")
   const [userpassword, setUserPassword] = useState<string | null>("")
@@ -33,14 +30,14 @@ export default function SignInSide() {
     myBool: true
   }
   useEffect(() => {
-    // let result = JSON.parse(localStorage.getItem('test') || '{}')
-    // if(result.myBool) {
-    //   navigate('/review')
-    // }
+    let result = JSON.parse(localStorage.getItem('test') || '{}')
+    if(result.myBool) {
+      navigate('/review')
+    }
     localStorage.setItem("useremail","default@gmail.com")
     localStorage.setItem("userpassword","default12");
     getLocalState()
-  },[]);
+  });
 
     const handleEmail = (e:React.ChangeEvent<HTMLInputElement>) => {
       setEmail(e.target.value);
@@ -68,7 +65,7 @@ export default function SignInSide() {
         password: data.get('password'),
       });
       if(email === useremail && password === userpassword) {
-            dispatch(setLoggedInStatus());
+            // dispatch(setLoggedInStatus());
             localStorage.setItem('test', JSON.stringify(storeMe))
             navigate('/review')
       }

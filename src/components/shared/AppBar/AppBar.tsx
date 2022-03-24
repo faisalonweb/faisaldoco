@@ -13,10 +13,14 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import {useNavigate} from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { unsetLoggedInStatus } from 'src/store/reducers/userSlice'
+import { useAppDispatch } from "src/store/hooks";
 
 const pages = ['default'];
 const ResponsiveAppBar = () => {
+  let result = JSON.parse(localStorage.getItem('test') || '{}')
   let navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event:any) => {
@@ -24,6 +28,7 @@ const ResponsiveAppBar = () => {
   };
   const handleOpenUserMenu = () => {
     localStorage.removeItem("test");
+    dispatch(unsetLoggedInStatus())
     navigate('/')
   };
 
@@ -32,7 +37,7 @@ const ResponsiveAppBar = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography
+            <Typography
             variant="h6"
             noWrap
             component="div"
@@ -85,22 +90,39 @@ const ResponsiveAppBar = () => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+            {
+              result.myBool ? (
+                <>
+                {pages.map((page) => (
+                  <Button
+                    key={page}
+                    sx={{ my: 2, color: 'white', display: 'block' }}
+                  >
+                    {page}
+                  </Button>
+                ))}
+               </> 
+              ):
+              (
+                ""
+              )
+            }
+            
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Logout">
-              <LogoutIcon onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </LogoutIcon>
-            </Tooltip>
+            {
+              result.myBool ? (
+                <Tooltip title="Logout">
+                <LogoutIcon onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </LogoutIcon>
+              </Tooltip>
+              ): (
+                 ""
+              )
+            }
+            
           </Box>
         </Toolbar>
       </Container>

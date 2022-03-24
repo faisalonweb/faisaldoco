@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { checkValidEmail, checkValidPassword } from 'src/utils/helpers/helper'
 import { localizedData } from "src/utils/helpers/language";
-import { LocalizationInterface } from 'src/utils/helpers/interfaces/localizationinterfaces'
+import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
 
 
 export default function SignUp() {
