@@ -12,13 +12,13 @@ import Typography from '@mui/material/Typography';
 import {useNavigate} from 'react-router-dom';
 import { checkValidEmail } from 'src/utils/helpers/helper'
 import { localizedData } from "src/utils/helpers/language";
-import { LocalizationInterface } from 'src/utils/helpers/interfaces/localizationinterfaces'
+import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
 
 export default function SignInSide() {
   let navigate = useNavigate();
   const constantData: LocalizationInterface = localizedData();
-  const [useremail, setUserEmail] = useState<any>("")
-  const [userpassword, setUserPassword] = useState<any>("")
+  const [useremail, setUserEmail] = useState<string | null>("")
+  const [userpassword, setUserPassword] = useState<string | null>("")
   const [email, setEmail] = useState("")
   const [emailError, setEmailError] = useState("");
   const [emailPasswordError, setEmailPasswordError] = useState("");
@@ -26,12 +26,18 @@ export default function SignInSide() {
   const [passwordError, setPasswordError] = useState("");
   const { Login_Title, Remember_Me, Signin_Btn, Signup_Link, Forgot_Password} = constantData.loginPage;
   
-
+  let storeMe = {
+    myBool: true
+  }
   useEffect(() => {
+    let result = JSON.parse(localStorage.getItem('test') || '{}')
+    if(result.myBool) {
+      navigate('/review')
+    }
     localStorage.setItem("useremail","default@gmail.com")
     localStorage.setItem("userpassword","default12");
     getLocalState()
-  },[]);
+  });
 
     const handleEmail = (e:React.ChangeEvent<HTMLInputElement>) => {
       setEmail(e.target.value);
@@ -59,6 +65,8 @@ export default function SignInSide() {
         password: data.get('password'),
       });
       if(email === useremail && password === userpassword) {
+            // dispatch(setLoggedInStatus());
+            localStorage.setItem('test', JSON.stringify(storeMe))
             navigate('/review')
       }
       else{
@@ -161,12 +169,12 @@ export default function SignInSide() {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
+                  <Link className="forgot-link" href="#" variant="body2">
                     {Forgot_Password}
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="/signup" variant="body2">
+                  <Link className="signup-link" href="/signup" variant="body2">
                     {Signup_Link}
                   </Link>
                 </Grid>

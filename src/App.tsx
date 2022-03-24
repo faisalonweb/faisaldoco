@@ -1,13 +1,15 @@
 import React,{ useEffect } from 'react';
 import LoginView from 'src/views/LoginView/LoginView'
 import SignUpView from 'src/views/SignUpView/SignUpView'
-import ReviewView from 'src/views/ReviewView/ReviewView'
-import { BrowserRouter as Router,Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import './App.scss';
 import 'src/styles/components.scss'
 import 'src/styles/theme/light.scss'
 import 'src/styles/theme/dark.scss'
 import { useAppSelector } from "src/store/hooks";
+import Layout from 'src/components/shared/Layout/Layout'
+import PrivateRoute from "src/routes/PrivateRoute";
+import RestrictedRouter from 'src/components/hoc/RestrictedRouter';
 
 function App() {
   const { theme } = useAppSelector(
@@ -20,17 +22,17 @@ function App() {
     else {
       document.body.classList.add('dark-theme');
     }
-
   });
   return (
     <div className="App">
-     <Router>
+      <Layout>
        <Routes>
-       <Route path="/" element={<LoginView />} />
+       <Route path="/" element={<Navigate to="/login" />} />
+       <Route path="/login" element={<LoginView />} />
        <Route path="/signup" element={<SignUpView />} />
-       <Route path="/review" element={<ReviewView />} />
+       <Route path="*"  element={<RestrictedRouter component={PrivateRoute}/>}/>
        </Routes>
-     </Router>
+      </Layout>
     </div>
   );
 }

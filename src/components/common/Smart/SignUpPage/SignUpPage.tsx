@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { checkValidEmail, checkValidPassword } from 'src/utils/helpers/helper'
 import { localizedData } from "src/utils/helpers/language";
-import { LocalizationInterface } from 'src/utils/helpers/interfaces/localizationinterfaces'
+import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
 
 
 export default function SignUp() {
@@ -25,26 +25,26 @@ export default function SignUp() {
   const [lastnameError, setLastNameError] = React.useState("");
   const { Signup_Title, Signup_Btn, Signin_Link } = constantData.signUpPage;
 
-  const handleEmail = (e:any) => {
+  const handleEmail = (e:React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
     if (checkValidEmail(email)) {
       setEmailError("");
     }
   };
-  const handlePassword = (e:any) => {
+  const handlePassword = (e:React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
     if (checkValidPassword(password)) {
       setPasswordError("");
     }
   };
-  const handleFirstName = (e:any) => {
+  const handleFirstName = (e:React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length) {
       setFirstNameError("");
     }
     setFirstName(e.target?.value);
   };
 
-  const handleLastName = (e:any) => {
+  const handleLastName = (e:React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length) {
       setLastNameError("");
     }

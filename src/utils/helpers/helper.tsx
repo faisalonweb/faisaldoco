@@ -1,4 +1,3 @@
-import { StringLiteralLike } from "typescript";
 
 const checkValidEmail = (email:string) => {
     //eslint-disable-next-line
