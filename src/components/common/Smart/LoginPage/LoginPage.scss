@@ -1,6 +1,12 @@
 .Login-Page {
+    .login-title {
+        color:  var(--normal-text)
+    }
     .inputs {
         .inputs-section {
+            .remember-me {
+                color:  var(--normal-text)
+            }
             .errorText {
                 color:  var(--error-text) !important;
                 font-size: 0.8rem;

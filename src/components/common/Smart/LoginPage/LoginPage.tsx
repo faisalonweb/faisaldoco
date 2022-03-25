@@ -116,7 +116,7 @@ export default function SignInSide() {
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <Typography className="login-title" component="h1" variant="h5">
               {Login_Title}
             </Typography>
             <Box className="inputs" component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
@@ -155,8 +155,14 @@ export default function SignInSide() {
               </Grid>
               
               <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label={Remember_Me}
+                control={<Checkbox value="remember" sx={{
+                  "&.Mui-checked": {
+                    "&, & + .MuiFormControlLabel-label": {
+                      color: "var(--normal-text)"
+                    }
+                  }
+                }} />}
+                label={<Typography className="remember-me">{Remember_Me}</Typography>}
               />
               <Button
                 className="submit-button"
