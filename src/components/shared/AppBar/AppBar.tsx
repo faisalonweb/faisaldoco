@@ -10,26 +10,30 @@ import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import {useNavigate} from 'react-router-dom';
-import { unsetLoggedInStatus } from 'src/store/reducers/userSlice'
+// import { unsetLoggedInStatus } from 'src/store/reducers/userSlice'
 import { useAppDispatch } from "src/store/hooks";
+import { localizedData } from "src/utils/helpers/language";
+import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
 
-const settings = ['Profile', 'Account', 'Documents', 'Logout'];
 const ResponsiveAppBar = () => {
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState<Element | undefined | null>(null);
+  const constantData: LocalizationInterface = localizedData();
   let result = JSON.parse(localStorage.getItem('test') || '{}')
   let navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { Profile, Account, Document, Logout } = constantData.appBar;
 
-  const handleOpenUserMenu = (ev:any) => {
+  const handleOpenUserMenu = (ev:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setAnchorElUser(ev.currentTarget);
   };
-  const handleCloseUserMenu = (ev:any) => {
+  const handleCloseUserMenu = () => {
     setAnchorElUser(null);
-    if(ev.nativeEvent.target.outerText === "Logout") {
-         localStorage.removeItem("test");
-         dispatch(unsetLoggedInStatus())
-         navigate('/')
-    }
+  };
+  const handleLogout = () => {
+    setAnchorElUser(null);
+    localStorage.removeItem("test");
+    // dispatch(unsetLoggedInStatus())
+    navigate('/')
   };
 
   return (
@@ -69,11 +73,18 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem>
+                  <Typography textAlign="center">{Profile}</Typography>
+              </MenuItem>
+              <MenuItem>
+                  <Typography textAlign="center">{Account}</Typography>
+              </MenuItem>
+              <MenuItem>
+                  <Typography textAlign="center">{Document}</Typography>
+              </MenuItem>
+              <MenuItem onClick={handleLogout}>
+                  <Typography textAlign="center">{Logout}</Typography>
+              </MenuItem>
             </Menu>
                 </>
             ): (

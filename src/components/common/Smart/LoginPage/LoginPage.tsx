@@ -10,15 +10,13 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import {useNavigate} from 'react-router-dom';
-import { checkValidEmail } from 'src/utils/helpers/helper'
+import { checkValidEmail, checkValidUser } from 'src/utils/helpers/helper'
 import { localizedData } from "src/utils/helpers/language";
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
 
 export default function SignInSide() {
   let navigate = useNavigate();
   const constantData: LocalizationInterface = localizedData();
-  const [useremail, setUserEmail] = useState<string | null>("")
-  const [userpassword, setUserPassword] = useState<string | null>("")
   const [email, setEmail] = useState("")
   const [emailError, setEmailError] = useState("");
   const [emailPasswordError, setEmailPasswordError] = useState("");
@@ -36,7 +34,6 @@ export default function SignInSide() {
     }
     localStorage.setItem("useremail","default@gmail.com")
     localStorage.setItem("userpassword","default12");
-    getLocalState()
   });
 
     const handleEmail = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -51,10 +48,6 @@ export default function SignInSide() {
       }
       setPassword(e.target.value);
     };
-    const getLocalState = () => {
-      setUserEmail(localStorage.getItem('useremail'))
-      setUserPassword(localStorage.getItem('userpassword'))
-    };
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       handleErrors()
@@ -64,13 +57,11 @@ export default function SignInSide() {
         email: data.get('email'),
         password: data.get('password'),
       });
-      if(email === useremail && password === userpassword) {
-            // dispatch(setLoggedInStatus());
+      if(checkValidUser(email,password)) {
             localStorage.setItem('test', JSON.stringify(storeMe))
             navigate('/review')
       }
       else{
-            navigate('/')
             setEmailPasswordError('Incorrect crendentials')
       }
       }

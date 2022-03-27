@@ -1,34 +1,37 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
+import { LoginAPI } from 'src/services/LoginApi/LoginApi'
 
-const initialState = {
-  useremail: 'default@gmail.com',
-  userpassword: 'default12',
-  isLoggedin: false
-};
-
-export const userSlice = createSlice({
-  name: "user",
-  initialState,
+// Slice
+let storeMe = {
+  myBool: true
+}
+const slice = createSlice({
+  name: 'user',
+  initialState: {
+    user: null,
+  },
   reducers: {
-    setUserEmail: (state, action) => {
-        state.useremail = action.payload;
-      },
-    setUserPassword: (state, action) => {
-        state.userpassword = action.payload;
-      },
-    setLoggedInStatus: (state) => {
-        state.isLoggedin = true;
-      },
-    unsetLoggedInStatus: (state) => {
-        state.isLoggedin = false;
-      },  
+    loginSuccess: (state, action) => {
+      state.user = action.payload;
+      localStorage.setItem('user', JSON.stringify(action.payload))
+      localStorage.setItem('test', JSON.stringify(storeMe))
+    },
   },
 });
 
-export const {
-  setUserEmail,
-  setUserPassword,
-  setLoggedInStatus,
-  unsetLoggedInStatus
-} = userSlice.actions;
-export default userSlice.reducer;
+export default slice.reducer
+
+// Actions
+
+const { loginSuccess } = slice.actions
+
+export const login = ( email:string, password:string) => (dispatch: any) => {
+  
+  try {
+    LoginAPI(email, password)
+    dispatch(loginSuccess({email,password}));
+  } catch (e) {
+    return console.error("error error");
+  }
+}
+
