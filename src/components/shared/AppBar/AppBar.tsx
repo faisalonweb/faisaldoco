@@ -5,33 +5,32 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import {useNavigate} from 'react-router-dom';
-import LogoutIcon from '@mui/icons-material/Logout';
 import { unsetLoggedInStatus } from 'src/store/reducers/userSlice'
 import { useAppDispatch } from "src/store/hooks";
 
-const pages = ['default'];
+const settings = ['Profile', 'Account', 'Documents', 'Logout'];
 const ResponsiveAppBar = () => {
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
   let result = JSON.parse(localStorage.getItem('test') || '{}')
   let navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
 
-  const handleOpenNavMenu = (event:any) => {
-    setAnchorElNav(event.currentTarget);
+  const handleOpenUserMenu = (ev:any) => {
+    setAnchorElUser(ev.currentTarget);
   };
-  const handleOpenUserMenu = () => {
-    localStorage.removeItem("test");
-    dispatch(unsetLoggedInStatus())
-    navigate('/')
+  const handleCloseUserMenu = (ev:any) => {
+    setAnchorElUser(null);
+    if(ev.nativeEvent.target.outerText === "Logout") {
+         localStorage.removeItem("test");
+         dispatch(unsetLoggedInStatus())
+         navigate('/')
+    }
   };
-
 
   return (
     <AppBar position="static">
@@ -45,84 +44,42 @@ const ResponsiveAppBar = () => {
           >
             Documatic
           </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
+          <Box sx={{ flexGrow: 0 }}>
+          {
+            result.myBool ? (
+                <>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip>
             <Menu
+              sx={{ mt: '45px' }}
               id="menu-appbar"
-              anchorEl={anchorElNav}
+              anchorEl={anchorElUser}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: 'top',
+                horizontal: 'right',
               }}
               keepMounted
               transformOrigin={{
                 vertical: 'top',
-                horizontal: 'left',
+                horizontal: 'right',
               }}
-              open={Boolean(anchorElNav)}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
             >
-              {pages.map((page) => (
-                <MenuItem key={page}>
-                  <Typography textAlign="center">{page}</Typography>
+              {settings.map((setting) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {
-              result.myBool ? (
-                <>
-                {pages.map((page) => (
-                  <Button
-                    key={page}
-                    sx={{ my: 2, color: 'white', display: 'block' }}
-                  >
-                    {page}
-                  </Button>
-                ))}
-               </> 
-              ):
-              (
-                ""
-              )
-            }
-            
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            {
-              result.myBool ? (
-                <Tooltip title="Logout">
-                <LogoutIcon onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </LogoutIcon>
-              </Tooltip>
-              ): (
-                 ""
-              )
-            }
-            
+                </>
+            ): (
+              ""
+            )
+          }  
           </Box>
         </Toolbar>
       </Container>

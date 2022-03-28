@@ -9,7 +9,7 @@ import 'src/styles/theme/dark.scss'
 import { useAppSelector } from "src/store/hooks";
 import Layout from 'src/components/shared/Layout/Layout'
 import PrivateRoute from "src/routes/PrivateRoute";
-import RestrictedRouter from 'src/components/hoc/RestrictedRouter';
+import LoggedRestrictedRouter from 'src/components/hoc/LoggedRestrictedRouter';
 
 function App() {
   const { theme } = useAppSelector(
@@ -30,7 +30,7 @@ function App() {
        <Route path="/" element={<Navigate to="/login" />} />
        <Route path="/login" element={<LoginView />} />
        <Route path="/signup" element={<SignUpView />} />
-       <Route path="*"  element={<RestrictedRouter component={PrivateRoute}/>}/>
+       <Route path="*"  element={<LoggedRestrictedRouter component={PrivateRoute}/>}/>
        </Routes>
       </Layout>
     </div>
