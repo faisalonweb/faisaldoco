@@ -48,6 +48,26 @@ const ResponsiveAppBar = () => {
           >
             Documatic
           </Typography>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+          >
+            Project Name
+            <br/>
+            Published to: Link to published docs
+          </Typography>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+          >
+            
+            <br/>
+            Last Published: Datetime last published
+          </Typography>
           <Box sx={{ flexGrow: 0 }}>
           {
             result.myBool ? (
