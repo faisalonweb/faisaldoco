@@ -10,7 +10,14 @@ export interface SignUpPage {
   Signup_Btn: string;
   Signin_Link: string;
 }
+export interface Appbar {
+  Profile: string;
+  Account: string;
+  Document: string;
+  Logout:  string;
+}
 export interface LocalizationInterface {
   loginPage: LoginPage;
   signUpPage: SignUpPage;
+  appBar: Appbar;
 }
