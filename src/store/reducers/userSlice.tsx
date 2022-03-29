@@ -5,16 +5,25 @@ import { LoginAPI } from 'src/services/LoginApi/LoginApi'
 let storeMe = {
   myBool: true
 }
+let loggedUser = localStorage.getItem('user');
 const slice = createSlice({
   name: 'user',
   initialState: {
     user: null,
+    isAuth: loggedUser ? true: false
   },
   reducers: {
     loginSuccess: (state, action) => {
       state.user = action.payload;
+      state.isAuth = true;
       localStorage.setItem('user', JSON.stringify(action.payload))
       localStorage.setItem('test', JSON.stringify(storeMe))
+    },
+    logoutSuccess: (state) =>  {
+      state.user = null;
+      state.isAuth = false;
+      localStorage.removeItem('user')
+      localStorage.removeItem('test')
     },
   },
 });
@@ -23,15 +32,18 @@ export default slice.reducer
 
 // Actions
 
-const { loginSuccess } = slice.actions
+const { loginSuccess,logoutSuccess  } = slice.actions
 
-export const login = ( email:string, password:string) => (dispatch: any) => {
+export const login = ( email:string, password:string) => async (dispatch: any) => {
   
   try {
-    LoginAPI(email, password)
+   await LoginAPI(email, password)
     dispatch(loginSuccess({email,password}));
   } catch (e) {
-    return console.error("error error");
+    return console.error(e);
   }
+}
+export const logout = () => async (dispatch: any) => {
+   dispatch(logoutSuccess())
 }
 
