@@ -15,6 +15,7 @@ const Layout = ({ children }: LayoutProps) => {
     <div className="Layout">
       
       <AppBar />
+      <div className="inner-layout">
       {
         isAuth ? (
           <LeftAppBar />
@@ -23,8 +24,18 @@ const Layout = ({ children }: LayoutProps) => {
           ''
         )
       }
+       {
+        isAuth ? (
+          <RightAppBar />
+        ):
+        (
+          ''
+        )
+      }
       {children}
-      <RightAppBar />
+     
+      </div>
+     
     </div>
   );
 };
