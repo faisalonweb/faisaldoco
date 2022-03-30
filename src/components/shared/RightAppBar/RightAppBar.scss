@@ -1,0 +1,13 @@
+.review-rightbar {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    width: 350px;
+    height: 100%;
+    background-color: lightgray;
+    .content {
+        margin-top: 40px;
+    }
+    
+}

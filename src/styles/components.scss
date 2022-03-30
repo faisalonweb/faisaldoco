@@ -9,6 +9,9 @@
 
 // PRESENTATIONAL COMPONENTS
 // shared
-@import 'src/components/shared/AppBar/AppBar.scss'
+@import 'src/components/shared/AppBar/AppBar.scss';
+@import 'src/components/shared/RightAppBar/RightAppBar.scss';
+@import 'src/components/shared/LeftAppBar/LeftAppBar.scss';
 // Popups
 
+@import 'src/components/shared/popUps/PublishModal/PublishModal.scss'

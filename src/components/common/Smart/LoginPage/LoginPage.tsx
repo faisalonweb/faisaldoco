@@ -10,13 +10,17 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import {useNavigate} from 'react-router-dom';
-import { checkValidEmail, checkValidUser } from 'src/utils/helpers/helper'
+import { checkValidEmail } from 'src/utils/helpers/helper'
 import { localizedData } from "src/utils/helpers/language";
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
+import { useAppDispatch } from "src/store/hooks";
+import { login } from 'src/store/reducers/userSlice'
+import { useAppSelector } from "src/store/hooks";
 
 export default function SignInSide() {
   let navigate = useNavigate();
   const constantData: LocalizationInterface = localizedData();
+  const dispatch = useAppDispatch();
   const [email, setEmail] = useState("")
   const [emailError, setEmailError] = useState("");
   const [emailPasswordError, setEmailPasswordError] = useState("");
@@ -24,17 +28,18 @@ export default function SignInSide() {
   const [passwordError, setPasswordError] = useState("");
   const { Login_Title, Remember_Me, Signin_Btn, Signup_Link, Forgot_Password} = constantData.loginPage;
   
-  let storeMe = {
-    myBool: true
-  }
+  const { isAuth } = useAppSelector(
+    (state) => state.defaultUser
+  );
   useEffect(() => {
-    let result = JSON.parse(localStorage.getItem('test') || '{}')
-    if(result.myBool) {
-      navigate('/review')
-    }
     localStorage.setItem("useremail","default@gmail.com")
     localStorage.setItem("userpassword","default12");
   });
+  useEffect(() => {
+    if(isAuth) {
+      navigate('/review')
+    }
+  },[isAuth]);
 
     const handleEmail = (e:React.ChangeEvent<HTMLInputElement>) => {
       setEmail(e.target.value);
@@ -57,13 +62,14 @@ export default function SignInSide() {
         email: data.get('email'),
         password: data.get('password'),
       });
-      if(checkValidUser(email,password)) {
-            localStorage.setItem('test', JSON.stringify(storeMe))
-            navigate('/review')
-      }
-      else{
-            setEmailPasswordError('Incorrect crendentials')
-      }
+      // if(checkValidUser(email,password)) {
+      //       localStorage.setItem('test', JSON.stringify(storeMe))
+      //       navigate('/review')
+      // }
+      // else{
+      //       setEmailPasswordError('Incorrect crendentials')
+      // }
+      dispatch(login(email,password))
       }
       else {
         console.log("invalid data")

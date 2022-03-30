@@ -10,10 +10,10 @@ import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import {useNavigate} from 'react-router-dom';
-// import { unsetLoggedInStatus } from 'src/store/reducers/userSlice'
 import { useAppDispatch } from "src/store/hooks";
 import { localizedData } from "src/utils/helpers/language";
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
+import { logout } from 'src/store/reducers/userSlice'
 
 const ResponsiveAppBar = () => {
   const [anchorElUser, setAnchorElUser] = React.useState<Element | undefined | null>(null);
@@ -31,9 +31,8 @@ const ResponsiveAppBar = () => {
   };
   const handleLogout = () => {
     setAnchorElUser(null);
-    localStorage.removeItem("test");
-    // dispatch(unsetLoggedInStatus())
-    navigate('/')
+     dispatch(logout())
+     navigate('/')
   };
 
   return (
@@ -48,7 +47,10 @@ const ResponsiveAppBar = () => {
           >
             Documatic
           </Typography>
-          <Typography
+          {
+            result.myBool ? (
+           <>   
+            <Typography
             variant="h6"
             noWrap
             component="div"
@@ -57,7 +59,7 @@ const ResponsiveAppBar = () => {
             Project Name
             <br/>
             Published to: Link to published docs
-          </Typography>
+          </Typography> 
           <Typography
             variant="h6"
             noWrap
@@ -68,6 +70,12 @@ const ResponsiveAppBar = () => {
             <br/>
             Last Published: Datetime last published
           </Typography>
+         </> 
+            ): (
+              ""
+            )
+          }
+          
           <Box sx={{ flexGrow: 0 }}>
           {
             result.myBool ? (
