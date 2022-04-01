@@ -5,9 +5,15 @@
 @import 'src/components/common/Smart/LoginPage/LoginPage.scss';
 @import 'src/components/common/Smart/SignUpPage/SignUpPage.scss';
 @import 'src/components/common/Smart/Review/Review.scss';
+@import 'src/components/common/Smart/User/User.scss';
+@import 'src/components/common/Smart/ReviewSideBar/ReviewSideBar.scss';
+@import 'src/components/common/Smart/OrgMembers/OrgMembers.scss';
+@import 'src/components/common/Smart/OrgConnection/OrgConnection.scss';
+@import 'src/components/common/Smart/OrgBilling/OrgBilling.scss';
 
 
 // PRESENTATIONAL COMPONENTS
+@import 'src/components/common/Presentational/OrgSideBar/OrgSideBar.scss';
 // shared
 @import 'src/components/shared/AppBar/AppBar.scss';
 @import 'src/components/shared/RightAppBar/RightAppBar.scss';
