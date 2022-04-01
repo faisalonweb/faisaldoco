@@ -36,31 +36,44 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar className="app-bar" position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-            <Typography
+          <Typography
+            className='documatic-logo'
             variant="h6"
             noWrap
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            Documatic
+            Documatic logo
           </Typography>
           {
             result.myBool ? (
-           <>   
-            <Typography
+           <>  
+          <div>
+          <Typography
+            className='project-name'
             variant="h6"
             noWrap
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
             Project Name
-            <br/>
-            Published to: Link to published docs
           </Typography> 
+          <Typography 
+            className='publish-name'
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
+              
+           Published to: Link to published docs
+          </Typography>
+          </div>  
+         
           <Typography
+            className='last-publish'
             variant="h6"
             noWrap
             component="div"

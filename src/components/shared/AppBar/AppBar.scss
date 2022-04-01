@@ -1,4 +1,27 @@
-.css-1cndkqf-MuiToolbar-root {
-    display: flex;
-    justify-content: space-between;
+
+.app-bar {
+    .css-1cndkqf-MuiToolbar-root {
+        display: flex;
+        justify-content: space-between;
+    }
+    .documatic-logo {
+        font-size: 20px;
+        font-family: 'Roboto';
+        font-weight: 400;
+    }
+    .project-name {
+        font-size: 28px;
+        font-family: 'Roboto';
+        font-weight: 500;
+    }
+    .publish-name {
+        font-size: 20px;
+        font-family: 'Roboto';
+        font-weight: 400;
+    }
+    .last-publish {
+        font-size: 20px;
+        font-family: 'Roboto';
+        font-weight: 400;
+    }
 }
