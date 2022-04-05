@@ -1,0 +1,69 @@
+.review-sidebar {
+    .heading-section {
+        display: flex;
+        background-color: darkgray;
+        .title {
+            font-family: 'Roboto';
+            font-size: 14px;
+            margin-left: 35px;
+        }
+        .list-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 40px;
+        }
+    }
+
+    .contentdoc {
+        position: relative;
+        margin: 30px;
+        width: 80%;
+        height: 30%;
+        background-color: white;
+        border-radius: 5px;
+      .document-content {
+          margin-top: 10px;
+          margin-left: 35px;
+          .doc-item {
+              display: flex;
+          .doc-item-icon {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+          }    
+          p {
+              margin-left: 10px;
+              font-family: 'Roboto';
+              font-size: 15px;
+          }
+          }
+      }  
+       
+    }
+    .contentproject {
+        position: relative;
+        margin: 30px;
+        width: 80%;
+        height: 40%;
+        background-color: white;
+        border-radius: 5px;
+       .project-content {
+           margin-left: 35px;
+           margin-top: 10px;
+         .project-item {
+             display: flex;
+             .project-item-icon {
+                display: flex;
+                justify-content: center;
+                align-items: center; 
+             }
+          p {
+            margin-left: 10px;
+            font-family: 'Roboto';
+            font-size: 15px;
+          }   
+         }  
+       }
+    }
+}
