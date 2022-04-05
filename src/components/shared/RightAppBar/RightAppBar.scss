@@ -3,11 +3,13 @@
     justify-content: center;
     position: absolute;
     right: 0;
+    top:0;
+    bottom: 0;
     width: 350px;
     height: 100%;
-    background-color: lightgray;
+    background-color: #ECECEC;
     .content {
-        width: 50%;
+        width: 51%;
         margin-top: 40px;
         display: flex;
         flex-direction: column;

@@ -1,21 +1,21 @@
-.org-content {
+.user-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 90px;
     height: 100px;
     justify-content: space-between;
-
+   
     .text-decor {
         text-decoration: none;
         font-family: 'Roboto';
         font-size: 15px;
         font-weight: 500;
         color: var(--normal-text);
+        margin-bottom: 30px;
         display: flex;
         justify-content: inherit;
         align-items: center;
         width: 80px;
-        margin-bottom: 30px;
     }
 }

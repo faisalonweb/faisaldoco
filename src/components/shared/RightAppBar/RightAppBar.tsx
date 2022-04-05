@@ -1,49 +1,31 @@
 import React from 'react';
-import { useState } from "react";
-import { Button} from "@mui/material";
-import PublishModal from 'src/components/shared/popUps/PublishModal/PublishModal'
-import ShareModal from 'src/components/shared/popUps/ShareModal/ShareModal'
+import ReviewRightSideBar from 'src/components/common/Smart/ReviewRightSideBar/ReviewRightSideBar'
+import UserRightSideBar from 'src/components/common/Smart/UserRightSideBar/UserRightSideBar'
+import { useLocation } from "react-router-dom";
 
 const RightAppBar = () => {
+  const { pathname } = useLocation();
 
-    const [open, setOpen] = useState<boolean>(false)
-    const [openModal, setOpenModal] = useState<boolean>(false)
-    const handleModal = () => {
-        setOpen(true);
-      };
-      const handleClose = () => {
-        setOpen(false);
-      };   
-      const handleShareModal = () => {
-        setOpenModal(true);
-      };
-      const handleCloseModal = () => {
-        setOpenModal(false);
-      };  
+  const renderSelectedTab = () => {
+      switch (pathname) {
+        case "/review":
+          return <ReviewRightSideBar />;
+        case "/user":
+            return <UserRightSideBar />;
+        case "/user/info":
+              return <UserRightSideBar />;  
+        case "/user/projects":
+                return <UserRightSideBar />;  
+        case "/user/integration":
+                  return <UserRightSideBar />;        
+        default:
+          return  <ReviewRightSideBar />   
+      }
+    };
+    
     return (
         <div className="review-rightbar">
-            <div className='content'>
-            <Button
-              variant="contained"
-              className="Publishbtn"
-              onClick={handleModal}
-            >
-              <div className="btn-content">
-                <span>Publish</span>
-              </div>
-            </Button>
-            <Button
-              variant="contained"
-              className="Sharebtn"
-              onClick={handleShareModal}
-            >
-              <div className="btn-content">
-                <span>Share</span>
-              </div>
-            </Button>
-            <PublishModal open={open} handleClose={handleClose}/>
-            <ShareModal open={openModal} handleCloseModal={handleCloseModal}/>
-            </div>
+            {renderSelectedTab()}
         </div>
     );
 };

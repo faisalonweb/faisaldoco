@@ -1,4 +1,8 @@
 .Layout {
    display: flex;
    flex-direction: column;
+   .inner-layout {
+      position: relative;
+      height: calc(100vh - 77px);
+   }
 }
