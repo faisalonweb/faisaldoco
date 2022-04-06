@@ -1,0 +1,68 @@
+.platform-modal {
+    .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+      width: 584px;
+      max-width: 800px;
+      height: 400px;
+    }
+ .modal-content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto';
+    margin-top: 50px;
+
+  .publish-heading {
+    font-family: 'Roboto';
+    font-size: 14px;
+  }
+  .code-link {
+    font-family: 'Roboto';
+    font-size: 14px;
+  }
+    .hoisting-service {
+        p {
+        font-family: 'Roboto';
+        font-size: 14px;
+        }
+        display: flex;
+        .full-field {
+            margin-left: 10px;
+        }
+        .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+            width: 100%;
+            
+        }
+        .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+            height: 32px;
+            margin-top: 10px;
+        }
+    }
+   .btns-section {
+       display: flex;
+       flex-direction: column;
+       margin-top: 50px;
+    .removebtn {
+        margin-top: 0px;
+        height: 28px;
+        width: 140px;
+        font-family: 'Roboto';
+        font-size: 8px;
+        margin-top: 10px;
+        background: var(--btn-danger) !important;
+        color: var(--normal-text) !important;
+       } 
+      .Savebtn {
+        margin-top: 0px;
+        height: 28px;
+        width: 140px;
+        font-family: 'Roboto';
+        font-size: 8px;
+      } 
+   } 
+   
+     
+ }   
+
+ 
+
+}

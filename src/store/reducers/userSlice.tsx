@@ -49,18 +49,7 @@ integration: [
     provider_link: 'provider link'
     
   },
-  {
-    id: "4",
-    provider_name: 'nam4',
-    provider_link: 'provider link'
-    
-  },
-  {
-    id: "5",
-    provider_name: 'nam5',
-    provider_link: 'provider link'
-   
-  },
+ 
 ]
   },
   reducers: {

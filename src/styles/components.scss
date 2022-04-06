@@ -20,6 +20,8 @@
 @import 'src/components/common/Presentational/UserInfo/UserInfo.scss';
 @import 'src/components/common/Presentational/UserSideBar/UserSideBar.scss';
 @import 'src/components/common/Presentational/UserProjectsCards/UserProjectsCards.scss';
+@import 'src/components/common/Presentational/UserIntegrationCards/UserIntegrationCards.scss';
+@import 'src/components/common/Presentational/OrgConnectionsData/OrgConnectionsData.scss';
 // shared
 @import 'src/components/shared/AppBar/AppBar.scss';
 @import 'src/components/shared/RightAppBar/RightAppBar.scss';
@@ -28,4 +30,5 @@
 // Popups
 
 @import 'src/components/shared/popUps/PublishModal/PublishModal.scss';
-@import 'src/components/shared/popUps/ShareModal/ShareModal.scss'
+@import 'src/components/shared/popUps/ShareModal/ShareModal.scss';
+@import 'src/components/shared/popUps/ConnectPlatformModal/ConnectPlatformModal.scss'

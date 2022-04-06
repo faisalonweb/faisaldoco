@@ -26,7 +26,7 @@ const LeftAppBar = () => {
           case "/user/integration":
             return <UserSideBar />;               
           default:
-            return  <ReviewSideBar />   
+            return  ""   
         }
       };
     return (
