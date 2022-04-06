@@ -6,16 +6,31 @@
     height: 100px;
     justify-content: space-between;
 
-    .text-decor {
-        text-decoration: none;
+    .active {
         font-family: 'Roboto';
         font-size: 15px;
         font-weight: 500;
         color: var(--normal-text);
+        text-decoration: none;
+        font-family: 'Roboto';
+        margin-bottom: 30px;
         display: flex;
         justify-content: inherit;
         align-items: center;
         width: 80px;
+
+   }
+   .inactive {
+        font-family: 'Roboto';
+        font-size: 15px;
+        font-weight: 500;
+        color: grey;
+        text-decoration: none;
+        font-family: 'Roboto';
         margin-bottom: 30px;
-    }
+        display: flex;
+        justify-content: inherit;
+        align-items: center;
+        width: 80px;
+   }
 }

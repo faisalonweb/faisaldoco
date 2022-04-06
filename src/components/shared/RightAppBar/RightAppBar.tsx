@@ -17,7 +17,7 @@ const RightAppBar = () => {
               return "";  
         case "/user/projects":
                 return <UserRightSideBar />;  
-        case "/user/integration":
+        case "/user/integrations":
                   return <UserIntegrationRightSideBar />;        
         default:
           return  ""  
