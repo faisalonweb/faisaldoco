@@ -39,6 +39,14 @@
             height: 32px;
             margin-top: 10px;
         }
+        .hoisting-dropdown {
+          margin-left: 10px;
+          .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+            height: 40px !important;
+            width: 200px;
+          }
+        }
+       
     }
    .dotted-area {
        border-style: dotted;

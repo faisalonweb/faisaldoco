@@ -1,4 +1,10 @@
+import * as React from 'react';
 import Dialog from "@mui/material/Dialog";
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import { Button} from "@mui/material";
@@ -11,9 +17,13 @@ interface Props {
 }
 
 export default function CodebaseModal(props: Props) {
+  const [age, setAge] = React.useState('');
 
     const resetModal = () => {
         props?.handleClose();
+      };
+      const handleChange = (event:any) => {
+        setAge(event.target.value);
       };
 
   return (
@@ -29,12 +39,20 @@ export default function CodebaseModal(props: Props) {
           </div>
           <div className="hoisting-service">
               <p>Hoisting service :</p>
-              <div>
-              <TextField
-                className="full-field"
-                type="text"
-                variant="outlined"
-              />
+              <div className="hoisting-dropdown">
+              <Box sx={{ minWidth: 120 }}>
+              <FormControl fullWidth>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={age}
+                  onChange={handleChange}
+                >
+                  <MenuItem value={10}>Notion</MenuItem>
+                  <MenuItem value={20}>Confluence</MenuItem>
+                </Select>
+              </FormControl>
+             </Box>
               </div>    
           </div>
           <Button

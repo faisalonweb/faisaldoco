@@ -37,14 +37,14 @@ export default function ShareModal(props: Props) {
       <DialogContent>
         <div className="modal-content">
             <div className="email-section">
-              <p className="info-label required">Invite member with email</p>
+              <p className="info-label required">Invite team member</p>
               <TextField
                 className="full-field"
                 value={email}
                 type="text"
                 onChange={handleEmail}
                 variant="outlined"
-                placeholder="Email"
+                placeholder="Name"
               />
               <p className="errorText" style={{ marginTop: "5px" }}>
                 {emailError}
