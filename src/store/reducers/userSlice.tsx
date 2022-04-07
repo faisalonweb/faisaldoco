@@ -10,7 +10,58 @@ const slice = createSlice({
   name: 'user',
   initialState: {
     user: null,
-    isAuth: loggedUser ? true: false
+    isAuth: loggedUser ? true: false,
+    projects: [
+      {
+      id: "1",
+      project_title: "Project 1",
+      hosted: 'link1',
+      last_publish: '2-2-22'
+      },
+      {
+        id: "2",
+        project_title: "Project 2",
+        hosted: 'link2',
+        last_publish: '2-2-22'
+      },
+      {
+        id: "3",
+        project_title: "Project 3",
+        hosted: 'link3',
+        last_publish: '2-2-22'
+      },
+],
+integration: [
+  {
+  id: "1",
+  provider_name: 'name1',
+  provider_link: 'provider link'
+  },
+  {
+    id: "2",
+    provider_name: 'nam2',
+    provider_link: 'provider link'
+   
+  },
+  {
+    id: "3",
+    provider_name: 'nam3',
+    provider_link: 'provider link'
+    
+  },
+  {
+    id: "4",
+    provider_name: 'nam4',
+    provider_link: 'provider link'
+    
+  },
+  {
+    id: "5",
+    provider_name: 'nam5',
+    provider_link: 'provider link'
+   
+  },
+]
   },
   reducers: {
     loginSuccess: (state, action) => {

@@ -20,7 +20,6 @@ const Layout = ({ children }: LayoutProps) => {
         isAuth ? (
           <>
           <LeftAppBar />
-          <RightAppBar />
           </>
         ):
         (
@@ -29,6 +28,18 @@ const Layout = ({ children }: LayoutProps) => {
       }
        
       {children}
+      {
+        isAuth ? (
+          <>
+      <RightAppBar />
+          
+          </>
+        ):
+        (
+          ''
+        )
+      }
+
      
       </div>
      

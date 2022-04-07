@@ -1,6 +1,7 @@
 import React from 'react';
 import ReviewSideBar from 'src/components/common/Smart/ReviewSideBar/ReviewSideBar'
 import OrgSideBar from 'src/components/common/Presentational/OrgSideBar/OrgSideBar'
+import UserSideBar from 'src/components/common/Presentational/UserSideBar/UserSideBar'
 import { useLocation } from "react-router-dom";
 
 const LeftAppBar = () => {
@@ -13,9 +14,17 @@ const LeftAppBar = () => {
           case "/org/connections":
             return <OrgSideBar />;  
           case "/org/members":
-              return <OrgSideBar />;
+            return <OrgSideBar />;
           case "/org/billing":
-                return <OrgSideBar />;       
+            return <OrgSideBar />;
+          case "/user/info":
+            return <UserSideBar />;  
+          case "/user/projects":
+            return <UserSideBar />;
+          case "/user/orgs":
+              return <UserSideBar />;  
+          case "/user/integration":
+            return <UserSideBar />;               
           default:
             return  <ReviewSideBar />   
         }

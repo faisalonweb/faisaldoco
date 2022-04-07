@@ -10,14 +10,21 @@
 @import 'src/components/common/Smart/OrgMembers/OrgMembers.scss';
 @import 'src/components/common/Smart/OrgConnection/OrgConnection.scss';
 @import 'src/components/common/Smart/OrgBilling/OrgBilling.scss';
+@import 'src/components/common/Smart/UserIntegration/UserIntegration.scss';
+@import 'src/components/common/Smart/UserProjects/UserProjects.scss';
+@import 'src/components/common/Smart/UserRightSideBar/UserRightSideBar.scss';
 
 
 // PRESENTATIONAL COMPONENTS
 @import 'src/components/common/Presentational/OrgSideBar/OrgSideBar.scss';
+@import 'src/components/common/Presentational/UserInfo/UserInfo.scss';
+@import 'src/components/common/Presentational/UserSideBar/UserSideBar.scss';
+@import 'src/components/common/Presentational/UserProjectsCards/UserProjectsCards.scss';
 // shared
 @import 'src/components/shared/AppBar/AppBar.scss';
 @import 'src/components/shared/RightAppBar/RightAppBar.scss';
 @import 'src/components/shared/LeftAppBar/LeftAppBar.scss';
+@import 'src/components/shared/popUps/CodebaseModal/CodebaseModal.scss';
 // Popups
 
 @import 'src/components/shared/popUps/PublishModal/PublishModal.scss';
