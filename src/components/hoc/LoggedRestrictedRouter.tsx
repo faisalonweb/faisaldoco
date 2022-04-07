@@ -7,7 +7,7 @@ type PrivateRouteProps = {
 const LoggedRestrictedRouter: React.FunctionComponent<PrivateRouteProps> = ({component:Component , ...restofProps}) => {
   let result = JSON.parse(localStorage.getItem('test') || '{}')
     return (
-      result.myBool ? <Component/> : <Navigate to="/login" />
+      result.myBool ? <Component/> : <Navigate to="/notpagefound" />
     )
 }
 

@@ -9,7 +9,6 @@ import UserProjects from 'src/components/common/Smart/UserProjects/UserProjects'
 import UserIntegration from 'src/components/common/Smart/UserIntegration/UserIntegration'
 import UserInfo from 'src/components/common/Presentational/UserInfo/UserInfo'
 import UserOrgs from 'src/components/common/Smart/UserOrgs/UserOrgs'
-import NotFoundPage from 'src/components/shared/NotFoundPage/NotFoundPage'
 
 const PrivateRoute = () => {
   return (
@@ -27,7 +26,6 @@ const PrivateRoute = () => {
        <Route path="/org/members" element={<OrgMembers />} />
        <Route path="/org/billing" element={<OrgBilling />} />
        <Route path="*" element={<Navigate to="/notpagefound" replace />} />
-       <Route path="/notpagefound" element={<NotFoundPage />} />
        </Routes> 
     </>   
   );
