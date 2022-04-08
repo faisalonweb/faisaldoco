@@ -4,5 +4,9 @@
    .inner-layout {
       position: relative;
       height: calc(100vh - 77px);
+   .main-content {
+      margin-left: 20%;
+      margin-right: 20%;
+   }   
    }
 }

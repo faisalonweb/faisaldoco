@@ -8,7 +8,7 @@ const UserIntegration = () => {
         (state) => state.defaultUser
       );
     return (
-        <div className="update-project">
+        <div className="user-integration">
            {integration?.length &&
                   integration?.map((item) => (
                     <Grid key={item.provider_name} item lg={6} xl={3} md={4} sm={6} xs={12}> 
