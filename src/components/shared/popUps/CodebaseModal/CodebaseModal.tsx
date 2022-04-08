@@ -1,6 +1,5 @@
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import DialogActions from "@mui/material/DialogActions";
 import { Button} from "@mui/material";
 import { TextField } from "@mui/material";
 import "src/components/shared/popUps/PublishModal/PublishModal.scss";

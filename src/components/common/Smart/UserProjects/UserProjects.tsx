@@ -1,7 +1,7 @@
 import React from 'react';
 import UserProjectsCards from 'src/components/common/Presentational/UserProjectsCards/UserProjectsCards'
 import { useAppSelector } from "src/store/hooks";
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 
 const UserProjects = () => {
     const { projects } = useAppSelector(

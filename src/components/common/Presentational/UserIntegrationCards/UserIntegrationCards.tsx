@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Button } from "@mui/material";
-import Logo404 from "src/assets/images/Frame404.png";
 
 interface props {
     providerName: string | undefined;

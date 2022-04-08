@@ -1,7 +1,7 @@
 import React from 'react';
 import UserIntegrationCards from 'src/components/common/Presentational/UserIntegrationCards/UserIntegrationCards'
 import { useAppSelector } from "src/store/hooks";
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 
 const UserIntegration = () => {
     const { integration } = useAppSelector(
