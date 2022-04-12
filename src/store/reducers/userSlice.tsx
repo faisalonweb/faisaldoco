@@ -10,6 +10,7 @@ const slice = createSlice({
   name: 'user',
   initialState: {
     user: null,
+    userSignup:false,
     isAuth: loggedUser ? true: false,
     projects: [
       {
@@ -65,6 +66,9 @@ integration: [
       localStorage.removeItem('user')
       localStorage.removeItem('test')
     },
+    changeUserSignup: (state) => {
+      state.userSignup = true;
+    }
   },
 });
 
@@ -72,7 +76,7 @@ export default slice.reducer
 
 // Actions
 
-const { loginSuccess,logoutSuccess  } = slice.actions
+const { loginSuccess,logoutSuccess, changeUserSignup } = slice.actions
 
 export const login = ( email:string, password:string) => async (dispatch: any) => {
   
@@ -85,5 +89,8 @@ export const login = ( email:string, password:string) => async (dispatch: any) =
 }
 export const logout = () => async (dispatch: any) => {
    dispatch(logoutSuccess())
+}
+export const signupauth = () => async (dispatch: any) => {
+  dispatch(changeUserSignup())
 }
 

@@ -10,6 +10,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { checkValidEmail, checkValidPassword } from 'src/utils/helpers/helper'
 import { localizedData } from "src/utils/helpers/language";
+import { useAppDispatch } from "src/store/hooks";
+import  { signupauth } from 'src/store/reducers/userSlice'
+import {useNavigate} from 'react-router-dom';
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
 
 
@@ -24,6 +27,8 @@ export default function SignUp() {
   const [lastname, setLastName] = React.useState("");
   const [lastnameError, setLastNameError] = React.useState("");
   const { Signup_Title, Signup_Btn, Signin_Link } = constantData.signUpPage;
+  let navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleEmail = (e:React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -59,6 +64,8 @@ export default function SignUp() {
       email: data.get('email'),
       password: data.get('password'),
     });
+    dispatch(signupauth())
+    navigate('/onboarding')
     }
     else {
       console.log("inverifyerro")
