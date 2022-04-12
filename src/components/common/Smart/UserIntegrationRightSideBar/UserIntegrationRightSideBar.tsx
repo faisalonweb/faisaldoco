@@ -20,7 +20,7 @@ const UserIntegrationRightSideBar = () => {
           onClick={handleModal}
         >
           <div className="btn-content">
-            <span>Connect Hositing Platform</span>
+            <span>Connect Service</span>
           </div>
         </Button>
         <ConnectPlatformeModal open={open} handleClose={handleClose}/>

@@ -10,6 +10,7 @@ import { useAppSelector } from "src/store/hooks";
 import Layout from 'src/components/shared/Layout/Layout'
 import PrivateRoute from "src/routes/PrivateRoute";
 import LoggedRestrictedRouter from 'src/components/hoc/LoggedRestrictedRouter';
+import NotFoundPage from 'src/components/shared/NotFoundPage/NotFoundPage'
 
 function App() {
   const { theme } = useAppSelector(
@@ -30,6 +31,7 @@ function App() {
        <Route path="/" element={<Navigate to="/login" />} />
        <Route path="/login" element={<LoginView />} />
        <Route path="/signup" element={<SignUpView />} />
+       <Route path="/notpagefound" element={<NotFoundPage />} />
        <Route path="*"  element={<LoggedRestrictedRouter component={PrivateRoute}/>}/>
        </Routes>
       </Layout>

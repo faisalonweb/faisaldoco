@@ -3,11 +3,15 @@ import LeftAppBar from 'src/components/shared/LeftAppBar/LeftAppBar'
 import RightAppBar from 'src/components/shared/RightAppBar/RightAppBar'
 import AppBar from "src/components/shared/AppBar/AppBar";
 import { useAppSelector } from "src/store/hooks";
+import { useLocation } from "react-router-dom";
+
+
 
 interface LayoutProps {
   children: ReactChild | ReactChildren;
 }
 const Layout = ({ children }: LayoutProps) => {
+  const { pathname } = useLocation();
   const { isAuth } = useAppSelector(
     (state) => state.defaultUser
   );
@@ -17,30 +21,16 @@ const Layout = ({ children }: LayoutProps) => {
       <AppBar />
       <div className="inner-layout">
       {
-        isAuth ? (
+        isAuth && pathname !== '/notpagefound' ? (
           <>
           <LeftAppBar />
+          <RightAppBar />
           </>
-        ):
-        (
-          ''
-        )
+        ):''
       }
        
       {children}
-      {
-        isAuth ? (
-          <>
-      <RightAppBar />
-          
-          </>
-        ):
-        (
-          ''
-        )
-      }
-
-     
+      
       </div>
      
     </div>
