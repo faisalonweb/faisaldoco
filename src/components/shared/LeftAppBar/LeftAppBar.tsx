@@ -23,10 +23,10 @@ const LeftAppBar = () => {
             return <UserSideBar />;
           case "/user/orgs":
               return <UserSideBar />;  
-          case "/user/integration":
+          case "/user/integrations":
             return <UserSideBar />;               
           default:
-            return  <ReviewSideBar />   
+            return  ""   
         }
       };
     return (

@@ -20,7 +20,7 @@ const PrivateRoute = () => {
        <Route path="/user" element={<Navigate to="/user/info" />}/>
        <Route path="/user/info" element={<UserInfo />} />
        <Route path="/user/projects" element={<UserProjects />} />
-       <Route path="/user/integration" element={<UserIntegration />} />
+       <Route path="/user/integrations" element={<UserIntegration />} />
        <Route path="/user/orgs" element={<UserOrgs />} />
        <Route path="/org" element={<Navigate to="/org/connections" />} />
        <Route path="/org/connections" element={<OrgConnections />} />

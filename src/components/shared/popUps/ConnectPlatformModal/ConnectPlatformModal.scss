@@ -1,11 +1,8 @@
-.connect-modal {
+.platform-modal {
     .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
       width: 892px;
       max-width: 900px;
       height: 501px;
-    }
-    .css-ypiqx9-MuiDialogContent-root {
-      overflow-y: hidden;
     }
  .modal-content {
     height: 100%;
@@ -40,30 +37,29 @@
             margin-top: 10px;
         }
     }
-   .dotted-area {
-       border-style: dotted;
-       border-color: red;
-       height: 100px;
-       width: 200px;
-       margin-top: 30px;
-       font-family: 'Roboto';
-       font-size: 12px;
-       padding: 15px;
-       .delbtn {
+   .btns-section {
+       display: flex;
+       flex-direction: column;
+       margin-top: 50px;
+    .removebtn {
         margin-top: 0px;
-        height: 25px;
-        width: 95px;
+        height: 28px;
+        width: 140px;
         font-family: 'Roboto';
-        font-size: 10px;
-       }
+        font-size: 8px;
+        margin-top: 10px;
+        background: var(--btn-danger) !important;
+        color: var(--normal-text) !important;
+       } 
+      .Savebtn {
+        margin-top: 0px;
+        height: 28px;
+        width: 140px;
+        font-family: 'Roboto';
+        font-size: 8px;
+      } 
    } 
-  .Savebtn {
-      margin-top: 10px;
-      height: 26px;
-      width: 110px;
-      font-family: 'Roboto';
-      font-size: 10px;
-  } 
+   
      
  }   
 

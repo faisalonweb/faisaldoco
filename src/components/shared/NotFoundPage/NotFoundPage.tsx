@@ -2,7 +2,7 @@ import React from 'react';
 import Logo404 from "src/assets/images/Frame404.png";
 const NotFoundPage = () => {
     return (
-        <div className="not-page-found" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <div className="not-page-found" style={{display: 'flex', justifyContent: 'center', alignItems: 'center',marginTop:'60px'}}>
             <img src={Logo404} alt="not found page"/>
         </div>
     );

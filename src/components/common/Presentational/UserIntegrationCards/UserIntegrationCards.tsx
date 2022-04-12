@@ -2,18 +2,17 @@ import React from 'react';
 import { Box, Button } from "@mui/material";
 
 interface props {
-    projectTitle: string | undefined;
-    hosted: string;
-    lastPublish: string;
+    providerName: string | undefined;
+    providerLink: string;
   }
-const UserProjectsCards = ({projectTitle, hosted, lastPublish }: props) => {
+const UserIntegrationCards = ({providerName, providerLink }: props) => {
     return (
         <div className="update-project-card">
            <Box component="div" className="card">
             <div className="card_header">
               <div>
-                  <p>Project title</p>
-                  <p style={{paddingTop:'6px'}}>{projectTitle}</p>
+                  <p>Provider name</p>
+                  <p style={{paddingTop:'6px'}}>{providerName}</p>
               </div>
               <Button
               variant="contained"
@@ -26,14 +25,8 @@ const UserProjectsCards = ({projectTitle, hosted, lastPublish }: props) => {
             </div>
            <div className="hosted-section">
                <div className="hosted-link">
-               <p>Hosted:</p>
-               <p>{hosted}</p>
+               <p>{providerLink}</p>
                </div>
-               <div className="last-publish">
-               <p>Last publish date:</p>
-               <p>{lastPublish}</p>  
-               </div>
-               
            </div>
 
           </Box>
@@ -41,4 +34,4 @@ const UserProjectsCards = ({projectTitle, hosted, lastPublish }: props) => {
     );
 };
 
-export default UserProjectsCards;
+export default UserIntegrationCards;

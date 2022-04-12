@@ -4,14 +4,17 @@ import InfoIcon from '@mui/icons-material/Info';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstructions';
 import CorporateFareIcon from '@mui/icons-material/CorporateFare';
+import { useLocation } from "react-router-dom";
 
 const UserSideBar = () => {
+    const { pathname } = useLocation();
+    console.log("path is",pathname)
     return (
      <div className="user-content">
-        <Link className="text-decor" to="/user/info"><InfoIcon/><span>Info</span></Link>
-        <Link className="text-decor" to="/user/projects"><AssignmentTurnedInIcon /><span style={{marginLeft:'25px'}}>Projects</span></Link>
-        <Link className="text-decor" to="/user/integration"><IntegrationInstructionsIcon /><span style={{marginLeft:'25px'}}>Integration</span></Link>
-        <Link className="text-decor" to="/user/orgs"><CorporateFareIcon /><span>Orgs</span></Link>
+        <Link className={pathname === '/user/info' ? 'active' : 'inactive'} to="/user/info"><InfoIcon/><span>Info</span></Link>
+        <Link className={pathname === '/user/projects' ? 'active' : 'inactive'} to="/user/projects"><AssignmentTurnedInIcon /><span style={{marginLeft:'25px'}}>Projects</span></Link>
+        <Link className={pathname === '/user/integrations' ? 'active' : 'inactive'} to="/user/integrations"><IntegrationInstructionsIcon /><span style={{marginLeft:'25px'}}>Integrations</span></Link>
+        <Link className={pathname === '/user/orgs' ? 'active' : 'inactive'} to="/user/orgs"><CorporateFareIcon /><span>Orgs</span></Link>
      </div>
     );
 };
