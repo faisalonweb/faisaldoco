@@ -4,12 +4,30 @@ import { useAppSelector } from "src/store/hooks";
 import { Grid } from "@mui/material";
 import { useAppDispatch } from "src/store/hooks";
 import { userRepo } from 'src/store/reducers/userRepos'
+import axios from "axios"
 
 const UserProjects = () => {
   const dispatch = useAppDispatch();
   
   useEffect(() => {
     dispatch(userRepo())
+    axios.post(
+      'https://github.com/login/oauth/access_token',
+      {},
+      {
+        params: {
+          client_id: '2b828bccbb2eba775abe',
+          client_secret: '784a99899f4b167ceb9254b9b98bba3d44a10608',
+          code: 'ac6a133dd97923e8598b'
+        }
+      }
+    )
+    .then(response => {
+      console.log("access token respones",response);
+    })
+    .catch(error => {
+      console.log("access token error",error);
+    });
   },[]);
     // const { projects } = useAppSelector(
     //     (state) => state.defaultUser

@@ -25,7 +25,7 @@ const UserProjectsCards = ({projectTitle, hosted, lastPublish }: props) => {
       useEffect(() => {
         dispatch(userInfoData())
       },[]);  
-    console.log("user info",userInfo)  
+    // console.log("user info",userInfo)  
     return (
         <div className="update-project-card">
            <Box component="div" className="card">
