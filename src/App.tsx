@@ -1,6 +1,7 @@
 import React,{ useEffect } from 'react';
 import LoginView from 'src/views/LoginView/LoginView'
 import SignUpView from 'src/views/SignUpView/SignUpView'
+import OnBoardView from 'src/views/OnBoardView/OnBoardView'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import './App.scss';
 import 'src/styles/components.scss'
@@ -31,6 +32,7 @@ function App() {
        <Route path="/" element={<Navigate to="/login" />} />
        <Route path="/login" element={<LoginView />} />
        <Route path="/signup" element={<SignUpView />} />
+       <Route path="/onboarding" element={<OnBoardView />} />
        <Route path="/notpagefound" element={<NotFoundPage />} />
        <Route path="*"  element={<LoggedRestrictedRouter component={PrivateRoute}/>}/>
        </Routes>

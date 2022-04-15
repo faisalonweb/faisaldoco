@@ -9,6 +9,7 @@ import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import {useNavigate} from 'react-router-dom';
 import { checkValidEmail } from 'src/utils/helpers/helper'
 import { localizedData } from "src/utils/helpers/language";
@@ -112,6 +113,7 @@ export default function SignInSide() {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon /> 
             </Avatar>
             <Typography className="login-title" component="h1" variant="h5">
               {Login_Title}

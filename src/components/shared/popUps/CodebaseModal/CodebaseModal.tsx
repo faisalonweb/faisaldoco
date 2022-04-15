@@ -1,13 +1,11 @@
 import * as React from 'react';
 import Dialog from "@mui/material/Dialog";
 import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import DialogContent from "@mui/material/DialogContent";
 import { Button} from "@mui/material";
-import { TextField } from "@mui/material";
 import "src/components/shared/popUps/PublishModal/PublishModal.scss";
 
 interface Props {

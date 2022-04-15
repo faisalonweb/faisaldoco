@@ -28,8 +28,9 @@ const Layout = ({ children }: LayoutProps) => {
           </>
         ):''
       }
-       
+      <div className="main-content">
       {children}
+      </div> 
       
       </div>
      

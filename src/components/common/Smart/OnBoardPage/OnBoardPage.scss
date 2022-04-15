@@ -1,0 +1,17 @@
+.OnBoard-Page {
+    .inputs {
+        .inputs-section {
+                .css-2m9kme-MuiFormControl-root {
+                    width: 100% !important;
+                    margin: 0 !important;
+                }
+                .errorText {
+                    color:  var(--error-text) !important;
+                    font-size: 0.8rem;
+                    margin-top: 5px;
+                }
+            
+        }
+        
+    }
+}
