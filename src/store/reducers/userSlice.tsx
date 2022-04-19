@@ -10,6 +10,7 @@ const slice = createSlice({
   name: 'user',
   initialState: {
     user: null,
+    loginError:'',
     userSignup:false,
     isAuth: loggedUser ? true: false,
     projects: [
@@ -68,6 +69,9 @@ integration: [
     },
     changeUserSignup: (state) => {
       state.userSignup = true;
+    },
+    setUserErrorMsg: (state,action) => {
+      state.loginError = action.payload;
     }
   },
 });
@@ -76,7 +80,7 @@ export default slice.reducer
 
 // Actions
 
-const { loginSuccess,logoutSuccess, changeUserSignup } = slice.actions
+const { loginSuccess,logoutSuccess, changeUserSignup, setUserErrorMsg } = slice.actions
 
 export const login = ( email:string, password:string) => async (dispatch: any) => {
   
@@ -84,7 +88,7 @@ export const login = ( email:string, password:string) => async (dispatch: any) =
    await LoginAPI(email, password)
     dispatch(loginSuccess({email,password}));
   } catch (e) {
-    return console.error(e);
+    dispatch(setUserErrorMsg(e))
   }
 }
 export const logout = () => async (dispatch: any) => {

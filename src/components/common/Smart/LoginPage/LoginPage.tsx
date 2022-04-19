@@ -24,12 +24,11 @@ export default function SignInSide() {
   const dispatch = useAppDispatch();
   const [email, setEmail] = useState("")
   const [emailError, setEmailError] = useState("");
-  const [emailPasswordError, setEmailPasswordError] = useState("");
   const [password, setPassword] = useState("")
   const [passwordError, setPasswordError] = useState("");
   const { Login_Title, Remember_Me, Signin_Btn, Signup_Link, Forgot_Password} = constantData.loginPage;
   
-  const { isAuth } = useAppSelector(
+  const { isAuth, loginError } = useAppSelector(
     (state) => state.defaultUser
   );
   useEffect(() => {
@@ -149,7 +148,7 @@ export default function SignInSide() {
                   autoComplete="current-password"
               />
               <p className="errorText">{passwordError}</p>
-              <p className="errorText">{emailPasswordError}</p>
+              <p className="errorText">{loginError}</p>
                 </Grid>
               </Grid>
               

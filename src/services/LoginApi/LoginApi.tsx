@@ -12,7 +12,7 @@ export const LoginAPI = (email:string,password:string) => {
               resolve([email,password]);
           }
           else {
-               reject('incorrect')
+               reject('Incorrect email or password')
           }
      });
 }
