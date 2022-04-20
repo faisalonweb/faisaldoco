@@ -1,7 +1,7 @@
 import axios from "axios"
 
-let storedToken = localStorage.getItem('access_token');
 export const getUserRepoAPI = async () => {
+let storedToken = localStorage.getItem('access_token');
     return await axios({
       headers: {
           authorization: `Bearer ${storedToken}`

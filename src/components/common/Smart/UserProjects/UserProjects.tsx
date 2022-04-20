@@ -13,7 +13,7 @@ const UserProjects = () => {
     const dispatch = useAppDispatch();
     const { search } = useLocation()
     const parsed = queryString.parse(search);
-    let storedToken = localStorage.getItem('access_token');
+    let storedtoken = localStorage.getItem('access_token');
     const { userRepos } = useAppSelector(
       (state) => state.userRepos
     );  
@@ -30,12 +30,12 @@ const UserProjects = () => {
       
     },[]);
     useEffect(() => {
-      if(localStorage.getItem('access_token')) {
-        dispatch(userInstallationsList())
-        dispatch(userInstallationsParticularList())
-        dispatch(userRepo())
+      if(userAccessToken) {
+      dispatch(userInstallationsList())
+      dispatch(userInstallationsParticularList())
+      dispatch(userRepo())
       }
-    },[localStorage.getItem('access_token')]);
+    },[userAccessToken]);
     return (
         <div className="update-project">
            {
