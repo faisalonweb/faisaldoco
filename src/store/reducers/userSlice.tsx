@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { LoginAPI } from 'src/services/LoginApi/LoginApi'
+import { getUserInstallationAPI } from 'src/services/UserInstallationApi/UserInstallationApi'
+import { getUserParticularInstallationAPI } from 'src/services/UserParticularInstallationApi/UserParticularInstallationApi'
 
 // Slice
 let storeMe = {
@@ -10,6 +12,9 @@ const slice = createSlice({
   name: 'user',
   initialState: {
     user: null,
+    loginError:'',
+    userInstallations: [] as any,
+    userParticularInstallations: [] as any,
     userSignup:false,
     isAuth: loggedUser ? true: false,
     projects: [
@@ -65,10 +70,22 @@ integration: [
       state.isAuth = false;
       localStorage.removeItem('user')
       localStorage.removeItem('test')
+      // localStorage.removeItem('code')
+      // localStorage.removeItem('access_token')
     },
     changeUserSignup: (state) => {
       state.userSignup = true;
-    }
+    },
+    setUserErrorMsg: (state,action) => {
+      state.loginError = action.payload;
+    },
+    userInstallations: (state, action) => {
+      state.userInstallations = action.payload;
+    },
+    userParticularInstallations: (state, action) => {
+      state.userParticularInstallations = action.payload;
+    },
+
   },
 });
 
@@ -76,7 +93,7 @@ export default slice.reducer
 
 // Actions
 
-const { loginSuccess,logoutSuccess, changeUserSignup } = slice.actions
+const { loginSuccess,logoutSuccess, changeUserSignup, setUserErrorMsg, userInstallations,userParticularInstallations } = slice.actions
 
 export const login = ( email:string, password:string) => async (dispatch: any) => {
   
@@ -84,7 +101,7 @@ export const login = ( email:string, password:string) => async (dispatch: any) =
    await LoginAPI(email, password)
     dispatch(loginSuccess({email,password}));
   } catch (e) {
-    return console.error(e);
+    dispatch(setUserErrorMsg(e))
   }
 }
 export const logout = () => async (dispatch: any) => {
@@ -93,4 +110,19 @@ export const logout = () => async (dispatch: any) => {
 export const signupauth = () => async (dispatch: any) => {
   dispatch(changeUserSignup())
 }
-
+export const userInstallationsList = () => async (dispatch: any) => {
+  try {
+    const {data} = await getUserInstallationAPI()
+    dispatch(userInstallations(data));
+  } catch (e) {
+    return console.error(e);
+  }
+}
+export const userInstallationsParticularList = () => async (dispatch: any) => {
+  try {
+    const {data} = await getUserParticularInstallationAPI()
+    dispatch(userParticularInstallations(data));
+  } catch (e) {
+    return console.error(e);
+  }
+}
