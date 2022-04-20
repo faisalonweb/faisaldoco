@@ -8,7 +8,6 @@ import { useLocation } from "react-router-dom";
 
 const UserSideBar = () => {
     const { pathname } = useLocation();
-    console.log("path is",pathname)
     return (
      <div className="user-content">
         <Link className={pathname === '/user/info' ? 'active' : 'inactive'} to="/user/info"><InfoIcon/><span>Info</span></Link>

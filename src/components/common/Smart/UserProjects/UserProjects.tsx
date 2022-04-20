@@ -4,48 +4,48 @@ import { useAppSelector } from "src/store/hooks";
 import { Grid } from "@mui/material";
 import { useAppDispatch } from "src/store/hooks";
 import { userRepo } from 'src/store/reducers/userRepos'
-import axios from "axios"
+import { userToken, userCode }  from 'src/store/reducers/userToken'
+import { useLocation } from 'react-router-dom'
+import  { userInstallationsList, userInstallationsParticularList } from 'src/store/reducers/userSlice'
+const queryString = require('query-string');
 
 const UserProjects = () => {
-  const dispatch = useAppDispatch();
-  
-  // useEffect(() => {
-  //   dispatch(userRepo())
-  //   axios.post(
-  //     'https://github.com/login/oauth/access_token',
-  //     {},
-  //     {
-  //       params: {
-  //         client_id: '2b828bccbb2eba775abe',
-  //         client_secret: '784a99899f4b167ceb9254b9b98bba3d44a10608',
-  //         code: '2653f58e5ad879d76c8e'
-  //       }
-  //     }
-  //   )
-  //   .then(response => {
-  //     console.log("access token respones",response);
-  //   })
-  //   .catch(error => {
-  //     console.log("access token error",error);
-  //   });
-  // },[]);
-    // const { projects } = useAppSelector(
-    //     (state) => state.defaultUser
-    //   );
-      const { userRepos } = useAppSelector(
-        (state) => state.userRepos
-      );  
-    console.log("user repos",userRepos)  
+    const dispatch = useAppDispatch();
+    const { search } = useLocation()
+    const parsed = queryString.parse(search);
+    let storedToken = localStorage.getItem('access_token');
+    const { userRepos } = useAppSelector(
+      (state) => state.userRepos
+    );  
+    const { userAccessToken } = useAppSelector(
+      (state) => state.userToken
+    );  
+    localStorage.setItem("code", parsed.code);
+    useEffect(() => {
+      // dispatch(userInstallationsList())
+      // dispatch(userInstallationsParticularList())
+      dispatch(userCode(parsed))
+      dispatch(userToken())
+      // dispatch(userRepo())
+      
+    },[]);
+    useEffect(() => {
+      if(localStorage.getItem('access_token')) {
+        dispatch(userInstallationsList())
+        dispatch(userInstallationsParticularList())
+        dispatch(userRepo())
+      }
+    },[localStorage.getItem('access_token')]);
     return (
         <div className="update-project">
-           {userRepos?.length &&
-                  userRepos?.map((item:any) => (
-                    <Grid key={item.id} item lg={6} xl={3} md={4} sm={6} xs={12}> 
-                    <div className="doc-item">
-                        <UserProjectsCards projectTitle={item.name} hosted={item.hosted} lastPublish={item.last_publish}/>
-                    </div>
-                    </Grid> 
-                  ))}
+           {
+           userRepos?.map((item:any) => (
+            <Grid key={item.id} item lg={6} xl={3} md={4} sm={6} xs={12}> 
+                <div className="doc-item">
+                    <UserProjectsCards projectTitle={item.name} hosted={item.hosted} lastPublish={item.last_publish}/>
+                </div>
+            </Grid> 
+          ))}
         </div>
     );
 };

@@ -4,6 +4,7 @@ import themeReducer from 'src/store/reducers/themeSlice'
 import dataReducer from 'src/store/reducers/dataSlice'
 import userInfoReducer from 'src/store/reducers/userInfo'
 import userReposReducer from 'src/store/reducers/userRepos'
+import userTokenReducer from 'src/store/reducers/userToken'
 
 export const store = configureStore({
     reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
         myTheme: themeReducer,
         appData: dataReducer,
         userInfo: userInfoReducer,
-        userRepos: userReposReducer
+        userRepos: userReposReducer,
+        userToken: userTokenReducer
     },
   });
 
