@@ -1,0 +1,72 @@
+.goodtogo-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 200px;
+    .goodtogo-title {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        font-family: 'Roboto';
+        font-size: 30px;
+        p {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        } 
+    }
+    .goodtogo-subtitle {
+        display: flex;
+        justify-content: center;
+        font-family: 'Roboto';
+        font-size: 20px;
+        color: grey;
+        p {
+            margin-top: 5px;
+            margin-bottom: 35px;
+        }
+    }
+    .goodtogo-section {
+        display: flex;
+        flex-direction: row;
+       .tell-your-team {
+           display: flex;
+           flex-direction: column;
+           border: 0.5px solid lightgray;
+           border-width: 1px;
+           height: 202px;
+           width: 300px;
+           border-radius: 5px;
+           justify-content: center;
+           align-items: center;
+           .contact-icon {
+               width: 87%;
+               margin-left: 0px;
+               color: gray;
+           }
+          .contact-info {
+              .tell-title {
+                font-family: 'Roboto';
+                font-size: 18px
+              }
+              .tell-subtitle {
+                font-family: 'Roboto';
+                font-size: 15px;
+                color: gray;
+              }
+          }
+       }
+        
+    }
+    .opendocumatic-btn {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        .documatic {
+            width: 400px;
+            height: 50px;
+        }
+    }
+}

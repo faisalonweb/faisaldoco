@@ -1,0 +1,99 @@
+.subscribe-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 100px;
+    .subscribe-title {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        font-family: 'Roboto';
+        font-size: 34px;
+        p {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        } 
+    }
+    .subscribe-subtitle {
+        display: flex;
+        justify-content: center;
+        font-family: 'Roboto';
+        font-size: 24px;
+        color: grey;
+        p {
+            margin-top: 5px;
+            margin-bottom: 35px;
+        }
+    }
+    .subscribe-section {
+        width: 900px;
+        height: 230px;
+        background-color: #F8F8F8;
+        border-radius: 5px;
+        padding: 35px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        .weekly-updates {
+            display: flex;
+            justify-content: space-between;
+            .weekly-updates-content {
+                .subscribe-p {
+                    font-family: 'Roboto';
+                    font-size: 24px;
+                    margin-bottom: 0;
+                    margin-top: 0;
+                }
+                .email-p {
+                    font-family: 'Roboto';
+                    font-size: 16px;
+                    margin-top: 5px;
+                    color: grey;
+                }
+            }
+        }
+        .divider-class {
+            margin-top: 1px;
+        }
+        .followus-twitter {
+            display: flex;
+            justify-content: space-between;
+            .followus-twitter-content {
+                .twitter-p {
+                    font-family: 'Roboto';
+                    font-size: 24px;
+                    margin-bottom: 0px;
+                    
+                }
+                .tweets-p {
+                    font-family: 'Roboto';
+                    font-size: 16px;
+                    margin-top: 5px;
+                    margin-bottom: 0px;
+                    color: grey;
+                }
+            }
+            .twitter-btn {
+                .continue {
+                    width: 140px;
+                    height: 40px;
+                    .twitter-icon {
+                        margin-top: 5px;
+                    }
+                }
+            }
+        }
+        
+    }
+    .continue-btn {
+        display: flex;
+        justify-content: center;
+        .continue {
+            width: 400px;
+            height: 50px;
+        }
+    }
+}

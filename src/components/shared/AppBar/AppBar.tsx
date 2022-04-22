@@ -37,8 +37,8 @@ const ResponsiveAppBar = () => {
 
   return (
     <AppBar className="app-bar" position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
+      <Container className="container-class" maxWidth="xl">
+        <Toolbar className="toolbar-class" disableGutters>
           <Typography
             className='documatic-logo'
             variant="h6"

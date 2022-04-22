@@ -12,6 +12,7 @@ const Review = () => {
                 multiline
                 rows={35}
                 maxRows={40}
+                style = {{width: '60%'}}
               />
         </div>
     );

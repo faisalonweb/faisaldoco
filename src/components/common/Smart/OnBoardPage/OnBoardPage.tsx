@@ -56,6 +56,7 @@ export default function OnBoardPage() {
   const [lastnameError, setLastNameError] = React.useState("");
   const [langName, setLangName] = React.useState<string[]>([]);
   const [langError, setLangError] = React.useState("");
+  const [role, setRole] = React.useState('');
   let navigate = useNavigate();
   const sortedData = names.sort((a, b) => a.localeCompare(b))
   const { userSignup } = useAppSelector(
@@ -67,6 +68,9 @@ export default function OnBoardPage() {
       navigate('/signup')
     }
   });
+  const handleRoleChange = (event: SelectChangeEvent<string>) => {
+    setRole(event.target.value);
+  };
 
   const handleChange = (event: SelectChangeEvent<typeof langName>) => {
     const {
@@ -76,6 +80,9 @@ export default function OnBoardPage() {
       // On autofill we get a the stringified value.
       typeof value === 'string' ? value.split(',') : value
     );
+  };
+  const handleNav = () => {
+    navigate('/invite')
   };
 
   const handleCompany = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -244,11 +251,30 @@ export default function OnBoardPage() {
                   {langError}
                 </p> 
               </Grid>
+              <Grid item xs={12}>
+              <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Select Role</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={role}
+                label="Select Role"
+                onChange={handleRoleChange}
+              >
+                <MenuItem value={10}>Founder</MenuItem>
+                <MenuItem value={20}>Engineer Lead</MenuItem>
+                <MenuItem value={30}>Product Lead</MenuItem>
+                <MenuItem value={30}>Sales</MenuItem>
+                <MenuItem value={30}>Engineer</MenuItem>
+              </Select>
+              </FormControl>
+              </Grid>
             </Grid>
             <Button
               type="submit"
               fullWidth
               variant="contained"
+              onClick={handleNav}
               sx={{ mt: 3, mb: 2 }}
             >
                Submit
