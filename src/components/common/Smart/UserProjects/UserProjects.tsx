@@ -23,7 +23,7 @@ const UserProjects = () => {
     useEffect(() => {
       dispatch(userCode(parsed))
       dispatch(userToken())
-    });
+    },[]);
     useEffect(() => {
       if(userAccessToken) {
       dispatch(userInstallationsList())

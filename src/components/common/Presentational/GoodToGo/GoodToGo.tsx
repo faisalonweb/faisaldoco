@@ -5,9 +5,21 @@ import HubIcon from '@mui/icons-material/Hub';
 import KeyboardIcon from '@mui/icons-material/Keyboard';
 import {useNavigate} from 'react-router-dom';
 import { useAppSelector } from "src/store/hooks";
+import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
+import { localizedData } from "src/utils/helpers/language";
 
 
 const GoodToGo = () => {
+    const constantData: LocalizationInterface = localizedData();
+    const { Title, 
+            Subtitle,
+            Tell_Title, 
+            Tell_Subtitle, 
+            Integrate_Title, 
+            Integrate_Subtitle, 
+            Keyboard_Title,
+            Keyboard_subtitle, 
+            Open_Documatic} = constantData.goodToGo;
     let navigate = useNavigate();
     const { userSignup } = useAppSelector(
         (state) => state.defaultUser
@@ -22,10 +34,10 @@ const GoodToGo = () => {
         <div className="goodtogo-page">
             <div className="goodtogo-content">
                 <div className="goodtogo-title">
-                    <p>You're good to go</p>
+                    <p>{Title}</p>
                 </div>
                 <div className="goodtogo-subtitle">
-                     <p>Next, explore the features and cretae issues by pressing c when you're in the app</p>
+                     <p>{Subtitle}</p>
                 </div>
                 <div className="goodtogo-section">
                  <div className="tell-your-team">
@@ -33,8 +45,8 @@ const GoodToGo = () => {
                    <ContactsIcon />
                   </div>
                   <div className="contact-info">
-                      <p className="tell-title">Tell your team</p>
-                      <p className="tell-subtitle">Make sure to invite your team members.</p>
+                      <p className="tell-title">{Tell_Title}</p>
+                      <p className="tell-subtitle">{Tell_Subtitle}</p>
                   </div>
                  </div>
                  <div className="tell-your-team">
@@ -42,8 +54,8 @@ const GoodToGo = () => {
                    <HubIcon />
                   </div>
                   <div className="contact-info">
-                      <p className="tell-title">Integrate Github & Slack</p>
-                      <p className="tell-subtitle">Make sure to invite your team members.</p>
+                      <p className="tell-title">{Integrate_Title}</p>
+                      <p className="tell-subtitle">{Integrate_Subtitle}</p>
                   </div>
                  </div>
                  <div className="tell-your-team">
@@ -51,8 +63,8 @@ const GoodToGo = () => {
                    <KeyboardIcon />
                   </div>
                   <div className="contact-info">
-                      <p className="tell-title">Keyboard shortcuts</p>
-                      <p className="tell-subtitle">Make sure to invite your team members.</p>
+                      <p className="tell-title">{Keyboard_Title}</p>
+                      <p className="tell-subtitle">{Keyboard_subtitle}</p>
                   </div>
                  </div>
                 </div>
@@ -63,7 +75,7 @@ const GoodToGo = () => {
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
                    >
-                    Open Documatic
+                    {Open_Documatic}
                  </Button>
                  </div>   
             </div>

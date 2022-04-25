@@ -1,7 +1,11 @@
 import React from 'react';
 import { Button} from "@mui/material";
+import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
+import { localizedData } from "src/utils/helpers/language";
 
 const UserRightSideBar = () => {
+  const constantData: LocalizationInterface = localizedData();
+  const { Connect_Codebase } = constantData.connectCodebase;
     return (
         <div className='content'>
            <a
@@ -13,7 +17,7 @@ const UserRightSideBar = () => {
               className="Publishbtn"
             >
               <div className="btn-content">
-                <span>Connect Codebase</span>
+                <span>{Connect_Codebase}</span>
               </div>
             </Button>
           </a>

@@ -1,10 +1,13 @@
 import React from 'react';
 import { useState } from "react";
-import { Button} from "@mui/material";
+import { Button } from "@mui/material";
 import ConnectPlatformeModal from 'src/components/shared/popUps/ConnectPlatformModal/ConnectPlatformModal'
+import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
+import { localizedData } from "src/utils/helpers/language";
 
 const UserIntegrationRightSideBar = () => {
-
+    const constantData: LocalizationInterface = localizedData();
+    const { Connect_Service } = constantData.userIntegrationRightSideBar;
     const [open, setOpen] = useState<boolean>(false)
     const handleModal = () => {
         setOpen(true);
@@ -20,7 +23,7 @@ const UserIntegrationRightSideBar = () => {
           onClick={handleModal}
         >
           <div className="btn-content">
-            <span>Connect Service</span>
+            <span>{Connect_Service}</span>
           </div>
         </Button>
         <ConnectPlatformeModal open={open} handleClose={handleClose}/>

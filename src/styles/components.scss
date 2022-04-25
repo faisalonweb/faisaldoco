@@ -30,9 +30,10 @@
 @import 'src/components/shared/AppBar/AppBar.scss';
 @import 'src/components/shared/RightAppBar/RightAppBar.scss';
 @import 'src/components/shared/LeftAppBar/LeftAppBar.scss';
-@import 'src/components/shared/popUps/CodebaseModal/CodebaseModal.scss';
 // Popups
 
 @import 'src/components/shared/popUps/PublishModal/PublishModal.scss';
 @import 'src/components/shared/popUps/ShareModal/ShareModal.scss';
-@import 'src/components/shared/popUps/ConnectPlatformModal/ConnectPlatformModal.scss'
+@import 'src/components/shared/popUps/ConnectPlatformModal/ConnectPlatformModal.scss';
+@import 'src/components/shared/popUps/CodebaseModal/CodebaseModal.scss';
+

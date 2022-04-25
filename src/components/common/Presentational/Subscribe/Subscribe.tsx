@@ -5,10 +5,21 @@ import Divider from '@mui/material/Divider';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import {useNavigate} from 'react-router-dom';
 import { useAppSelector } from "src/store/hooks";
+import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
+import { localizedData } from "src/utils/helpers/language";
 
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
 const Subscribe = () => {
+    const constantData: LocalizationInterface = localizedData();
+    const { Title, 
+            Subtitle, 
+            Subscribe_Weekly, 
+            Subscribe_Weekly_Desc, 
+            Follow_Us_Title, 
+            Follow_Us_Desc, 
+            Documatic_Btn, 
+            Continue_Btn  } = constantData.subscribePage;
     let navigate = useNavigate();
     const { userSignup } = useAppSelector(
         (state) => state.defaultUser
@@ -26,16 +37,16 @@ const Subscribe = () => {
             <div className="subscribe-content">
                 
                 <div className="subscribe-title">
-                    <p>Subscribe to updates</p>
+                    <p>{Title}</p>
                 </div>
                 <div className="subscribe-subtitle">
-                     <p>Documatic is improving each week. These are the best ways to learn about changes.</p>
+                     <p>{Subtitle}</p>
                 </div>
                 <div className="subscribe-section">
                  <div className="weekly-updates">
                      <div className="weekly-updates-content">
-                      <p className="subscribe-p">Subscribe to weekly updates</p>
-                      <p className="email-p">Email once a week about new features and changes</p>
+                      <p className="subscribe-p">{Subscribe_Weekly}</p>
+                      <p className="email-p">{Subscribe_Weekly_Desc}</p>
                      </div>
                      <div className="toggle-btn">
                      <Switch {...label} defaultChecked />
@@ -44,8 +55,8 @@ const Subscribe = () => {
                  <Divider className="divider-class"/>
                  <div className="followus-twitter">
                      <div className="followus-twitter-content">
-                     <p className="twitter-p">Follow us Twitter</p>
-                      <p className="tweets-p">Tweets about features and tricks</p>
+                     <p className="twitter-p">{Follow_Us_Title}</p>
+                      <p className="tweets-p">{Follow_Us_Desc}</p>
                      </div>
                      <div className="twitter-btn">
                      <Button
@@ -58,7 +69,7 @@ const Subscribe = () => {
                          <TwitterIcon />
                         </span>
                         <span>
-                          @linear
+                          {Documatic_Btn}
                         </span>
                     </Button>
                      </div>
@@ -72,7 +83,7 @@ const Subscribe = () => {
                     onClick={handleNav}
                     sx={{ mt: 3, mb: 2 }}
                    >
-                    Continue
+                    {Continue_Btn}
                  </Button>
                  </div>   
             </div>
