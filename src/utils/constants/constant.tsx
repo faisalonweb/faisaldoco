@@ -1,1 +1,22 @@
-export{}
+export const languageList =  [ 'Python',
+                                'React JS',
+                                'Java',
+                                'Angular JS',
+                                'View JS',
+                                'Swift',
+                                'C++',
+                                'C#',
+                                'HTML and CSS',
+                                'JavaScript',
+                                'C',
+                                'Objective-C',
+                                'PHP',
+                                'Ruby',
+                                'SQL'];
+export const options = [
+    {label: 'Founder', value: 'founder'},
+    {label: 'Engineer Lead',value: 'engineer lead'},
+    {label: 'Product Lead',value: 'product'},
+    {label: 'Sales', value: 'sale'},
+    {label: 'Engineer', value: 'eng'},
+];                                 

@@ -1,19 +1,24 @@
 import React from 'react';
 import CardMembershipIcon from '@mui/icons-material/CardMembership';
 import { Button} from "@mui/material";
+import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
+import { localizedData } from "src/utils/helpers/language";
+
 const OrgConnectionsData = () => {
+    const constantData: LocalizationInterface = localizedData();
+    const { Connection_Text, Make_Connection, Remove_Connection } = constantData.orgConnection;
     return (
         <div className="org-div">
             <div className="org-connection">
                 <div className="link-side">
                  <CardMembershipIcon className="icon-div"/>
-                 <p>Org/account connection link</p>
+                 <p>{Connection_Text}</p>
                 </div>
                 <div className="add-btn-div">
                 <Button
                 className="add-btn"
                 >
-                 Make Connection
+                  {Make_Connection}
                 </Button>
                 </div>
             </div>
@@ -26,7 +31,7 @@ const OrgConnectionsData = () => {
                 <Button
                 className="add-btn"
                 >
-                 Make Connection
+                 {Make_Connection}
                 </Button>
                 </div>
             </div>
@@ -39,7 +44,7 @@ const OrgConnectionsData = () => {
                 <Button
                 className="remove-btn"
                 >
-                 Remove Connection
+                 {Remove_Connection}
                 </Button>
                 </div>
             </div>

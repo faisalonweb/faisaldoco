@@ -34,7 +34,7 @@ export default function ShareModal(props: Props) {
 
   return (
     <Dialog className="share-modal" open={props?.open} onClose={resetModal}>
-      <DialogContent>
+      <DialogContent className="dialog-content">
         <div className="modal-content">
             <div className="email-section">
               <p className="info-label required">Invite team member</p>

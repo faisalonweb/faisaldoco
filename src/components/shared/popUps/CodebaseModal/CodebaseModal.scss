@@ -1,18 +1,14 @@
 .connect-modal {
-    .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
-      width: 892px;
-      max-width: 900px;
-      height: 501px;
-    }
-    .css-ypiqx9-MuiDialogContent-root {
-      overflow-y: hidden;
-    }
+  .dialog-content {
+    height: 550px;
+    width: 784px !important;
+  } 
  .modal-content {
     height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     font-family: 'Roboto';
-    margin-top: 50px;
 
   .publish-heading {
     font-family: 'Roboto';
@@ -31,20 +27,9 @@
         .full-field {
             margin-left: 10px;
         }
-        .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
-            width: 100%;
-            
-        }
-        .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
-            height: 32px;
-            margin-top: 10px;
-        }
+       
         .hoisting-dropdown {
           margin-left: 10px;
-          .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
-            height: 40px !important;
-            width: 200px;
-          }
         }
        
     }

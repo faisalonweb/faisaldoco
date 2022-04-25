@@ -9,8 +9,12 @@ import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import {useNavigate} from 'react-router-dom';
 import { useAppSelector } from "src/store/hooks";
+import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
+import { localizedData } from "src/utils/helpers/language";
 
 const Invitecoworkers = () => {
+    const constantData: LocalizationInterface = localizedData();
+    const { Title, Subtitle, Invite_As, Send_Invites, Continue_Button, Select_Role} = constantData.inviteCo;
     const [role, setRole] = React.useState('');
     let navigate = useNavigate();
     const { userSignup } = useAppSelector(
@@ -36,10 +40,10 @@ const Invitecoworkers = () => {
                 </Avatar>
                 </div>
                 <div className="invite-title">
-                    <p>invite co-workers to your team</p>
+                    <p>{Title}</p>
                 </div>
                 <div className="invite-subtitle">
-                     <p>Documatic is meant to be used with your team. Invite some co-workers to test it out with.</p>
+                     <p>{Subtitle}</p>
                 </div>
                 <div className="invite-section">
                   <div className="invite-inuput">
@@ -56,12 +60,12 @@ const Invitecoworkers = () => {
                   <div className="send-invites-section">
                       <div className="role-dropdown-section">
                       <div className="invite-as">
-                        <p>Invite as</p>
+                        <p>{Invite_As}</p>
                       </div>  
                       <div className="role-dropdown">
                       </div> 
                         <FormControl style={{minWidth: 170}} fullWidth>
-                        <InputLabel id="demo-simple-select-label">Select Role</InputLabel>
+                        <InputLabel id="demo-simple-select-label">{Select_Role}</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
@@ -85,7 +89,7 @@ const Invitecoworkers = () => {
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
                        >
-                        Send invites
+                        {Send_Invites}
                      </Button>
                       </div>
                   </div>
@@ -98,7 +102,7 @@ const Invitecoworkers = () => {
                     onClick={handleNav}
                     sx={{ mt: 3, mb: 2 }}
                    >
-                    Continue
+                    {Continue_Button}
                  </Button>
                  </div>   
             </div>

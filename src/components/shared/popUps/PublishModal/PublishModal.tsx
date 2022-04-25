@@ -18,20 +18,20 @@ export default function PublishModal(props: Props) {
 
   return (
     <Dialog className="publish-modal" open={props?.open} onClose={resetModal}>
-      <DialogContent>
+      <DialogContent className="dialog-content">
         <div className="modal-content">
           <div>
           <div className="publish-heading">
            <p>Publish to service name?</p>
           </div>
           <div className="center-modal">
-            <div className="avatar-class"> <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /></div>
+            <div className="avatar-class"> <Avatar className="static-img" alt="Remy Sharp" src="/static/images/avatar/2.jpg" /></div>
             <div className="publish-content"> <p>service/doc URL</p></div>
           </div>
           </div>
         </div>
       </DialogContent>
-      <DialogActions>
+      <DialogActions className="action-class">
         <Button
           onClick={resetModal}
           className="cancel-btn"

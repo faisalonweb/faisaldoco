@@ -3,10 +3,14 @@ import { useState } from "react";
 import { Button} from "@mui/material";
 import PublishModal from 'src/components/shared/popUps/PublishModal/PublishModal'
 import ShareModal from 'src/components/shared/popUps/ShareModal/ShareModal'
+import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
+import { localizedData } from "src/utils/helpers/language";
 
 const ReviewRightSideBar = () => {
     const [open, setOpen] = useState<boolean>(false)
     const [openModal, setOpenModal] = useState<boolean>(false)
+    const constantData: LocalizationInterface = localizedData();
+    const { Publish, Share} = constantData.reviewRightSideBar;
     const handleModal = () => {
         setOpen(true);
       };
@@ -27,7 +31,7 @@ const ReviewRightSideBar = () => {
               onClick={handleModal}
             >
               <div className="btn-content">
-                <span>Publish</span>
+                <span>{Publish}</span>
               </div>
             </Button>
             <Button
@@ -36,7 +40,7 @@ const ReviewRightSideBar = () => {
               onClick={handleShareModal}
             >
               <div className="btn-content">
-                <span>Share</span>
+                <span>{Share}</span>
               </div>
             </Button>
             <PublishModal open={open} handleClose={handleClose}/>

@@ -2,9 +2,13 @@ import React from 'react';
 import ListIcon from '@mui/icons-material/List';
 import LabelImportantIcon from '@mui/icons-material/LabelImportant';
 import { useAppSelector } from "src/store/hooks";
+import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
+import { localizedData } from "src/utils/helpers/language";
 
 
 const ReviewSideBar = () => {
+    const constantData: LocalizationInterface = localizedData();
+    const { Docs_To_Review, List_Of_Projects} = constantData.reviewSideBar;
     const { docs, projects } = useAppSelector(
         (state) => state.appData
       );
@@ -13,7 +17,7 @@ const ReviewSideBar = () => {
             <div className='contentdoc'>
                 <div className="heading-section">
                   <div className="title">
-                      <h3>Docs to review</h3>
+                      <h3>{Docs_To_Review}</h3>
                   </div>
                   <div className="list-icon">
                       <ListIcon />
@@ -34,7 +38,7 @@ const ReviewSideBar = () => {
             <div className='contentproject'>
             <div className="heading-section">
                   <div className="title">
-                      <h3>List of projects</h3>
+                      <h3>{List_Of_Projects}</h3>
                   </div>
                   <div className="list-icon">
                       <ListIcon />

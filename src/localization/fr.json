@@ -17,7 +17,60 @@
         "Account": "Account",
         "Document": "Document",
         "Logout":   "Logout"
-    }
-
+    },
+    "reviewRightSideBar": {
+        "Publish": "Publish",
+        "Share": "Share"
+    },
+    "reviewSideBar": {
+        "Docs_To_Review": "Docs to review",
+        "List_Of_Projects": "List of projects"
+    },
+    "userIntegrationRightSideBar": {
+        "Connect_Service": "Connect Service"
+    },
+    "connectCodebase": {
+        "Connect_Codebase": "Connect Codebase"
+    },
+    "onBoardPage": {
+        "onBoard": "onBoard",
+        "SelectLanguage": "Select Language",
+        "SelectRole": "Select Role"
+    },
+    "goodToGo": {
+        "Title": "You're good to go",
+         "Subtitle": "Next, explore the features and cretae issues by pressing c when you're in the app",
+         "Tell_Title": "Tell your team",
+         "Tell_Subtitle": "Make sure to invite your team members.",
+         "Integrate_Title": "Integrate Github & Slack",
+         "Integrate_Subtitle": "Make sure to invite your team members.",
+         "Keyboard_Title": "Keyboard shortcuts",
+         "Keyboard_subtitle": "Make sure to invite your team members.",
+         "Open_Documatic": "Open Documatic"
+   },
+   "inviteCo": {
+        "Title": "invite co-workers to your team",
+        "Subtitle": "Documatic is meant to be used with your team. Invite some co-workers to test it out with.",
+        "Invite_As": "Invite as",
+        "Select_Role": "Select Role",
+        "Send_Invites": " Send invites",
+        "Continue_Button": "Continue"
+  },
+  "orgConnection": {
+        "Connection_Text": "Org/account connection link",
+        "Make_Connection": " Make Connection",
+        "Remove_Connection": "Remove Connection"
+  },
+  "subscribePage": {
+        "Title": "Subscribe to updates",
+        "Subtitle": "Documatic is improving each week. These are the best ways to learn about changes.",
+        "Subscribe_Weekly": "Subscribe to weekly updates",
+        "Subscribe_Weekly_Desc": "Email once a week about new features and changes",
+        "Follow_Us_Title": "Follow us Twitter",
+        "Follow_Us_Desc": "Tweets about features and tricks",
+        "Documatic_Btn": "@documatic",
+        "Continue_Btn": "Continue"
+}   
+   
     
 }

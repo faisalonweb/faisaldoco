@@ -16,7 +16,7 @@ export default function ConnectPlatformeModal(props: Props) {
 
   return (
     <Dialog className="platform-modal" open={props?.open} onClose={resetModal}>
-      <DialogContent>
+      <DialogContent className="dialog-content">
         <div className="modal-content">
           <div>
           <div className="publish-heading">

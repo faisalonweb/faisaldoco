@@ -24,8 +24,8 @@ export default function CodebaseModal(props: Props) {
       };
 
   return (
-    <Dialog className="connect-modal" open={props?.open} onClose={resetModal}>
-      <DialogContent>
+    <Dialog className="connect-modal" open={props?.open} onClose={resetModal} maxWidth="lg">
+      <DialogContent className="dialog-content">
         <div className="modal-content">
           <div>
           <div className="publish-heading">

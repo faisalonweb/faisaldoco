@@ -1,8 +1,7 @@
 .share-modal {
-    .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
-      width: 484px;
-      max-width: 800px;
-      height: 350px;
+    .dialog-content {
+        width: 484px;
+        height: 350px;
     }
  .modal-content {
     height: 100%;
@@ -17,20 +16,21 @@
     }
     .email-section {
         width: 100%;
+        .full-field{
+            width: 100%;
+        }
         
     }
     .url-section {
         width: 100%;
-    }
-    
-    .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
-        width: 100%;
+        .full-field-desc{
+            width: 100%;
+        }
     }
  }   
 .title-section {
     display: flex;
     justify-content: space-between;
 }
-
 
 }

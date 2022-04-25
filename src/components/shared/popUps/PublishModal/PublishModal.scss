@@ -1,9 +1,8 @@
 .publish-modal {
-    .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
-      width: 484px;
-      max-width: 800px;
-      height: 350px;
-    }
+ .dialog-content {
+  height: 350px;
+  width: 484px;
+ } 
  .modal-content {
     height: 100%;
     display: flex;
@@ -14,9 +13,9 @@
          align-items: center;
          justify-content: center;
          .avatar-class {
-            .css-2s90m6-MuiAvatar-root {
-                height: 60px;
-                width: 60px;
+            .static-img {
+              width: 60px;
+              height: 60px;
             }
             
          }
@@ -42,7 +41,7 @@
     justify-content: space-between;
 }
 
-.css-hlj6pa-MuiDialogActions-root {
+.action-class {
     justify-content: center;
     margin-bottom: 27px;
     .cancel-btn {

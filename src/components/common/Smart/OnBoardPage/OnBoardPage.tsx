@@ -17,6 +17,9 @@ import Checkbox from '@mui/material/Checkbox';
 import { useAppSelector } from "src/store/hooks";
 import {useNavigate} from 'react-router-dom';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
+import { localizedData } from "src/utils/helpers/language";
+import { languageList, options } from "src/utils/constants/constant";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -29,25 +32,6 @@ const MenuProps = {
   },
 };
 
-const names = [
-  'Python',
-  'React JS',
-  'Java',
-  'Angular JS',
-  'View JS',
-  'Swift',
-  'C++',
-  'C#',
-  'HTML and CSS',
-  'JavaScript',
-  'C',
-  'Objective-C',
-  'PHP',
-  'Ruby',
-  'SQL'
-
-];
-
 export default function OnBoardPage() {
   const [company, setCompany] = React.useState("")
   const [firstname, setFirstName] = React.useState("");
@@ -58,10 +42,12 @@ export default function OnBoardPage() {
   const [langError, setLangError] = React.useState("");
   const [role, setRole] = React.useState('');
   let navigate = useNavigate();
-  const sortedData = names.sort((a, b) => a.localeCompare(b))
+  const sortedData = languageList.sort((a, b) => a.localeCompare(b))
   const { userSignup } = useAppSelector(
     (state) => state.defaultUser
   );
+  const constantData: LocalizationInterface = localizedData();
+  const { onBoard, SelectLanguage, SelectRole} = constantData.onBoardPage;
 
   React.useEffect(() => {
     if(!userSignup) {
@@ -177,7 +163,7 @@ export default function OnBoardPage() {
           <CheckCircleOutlineOutlinedIcon />    
           </Avatar>
           <Typography component="h1" variant="h5">
-            OnBoard
+            {onBoard}
           </Typography>
           <Box component="form" className="inputs" onSubmit={handleSubmit} noValidate sx={{ mt: 3 }}>
             <Grid className="inputs-section" container spacing={2}>
@@ -226,8 +212,8 @@ export default function OnBoardPage() {
                 <p className="errorText"></p>
               </Grid>
               <Grid item xs={12}>
-              <FormControl sx={{ m: 1, width: 300 }}>
-                <InputLabel id="demo-multiple-checkbox-label">Select Language</InputLabel>
+              <FormControl sx={{ width: '100%' }}>
+                <InputLabel id="demo-multiple-checkbox-label">{SelectLanguage}</InputLabel>
                 <Select
                 labelId="demo-multiple-checkbox-label"
                 id="demo-multiple-checkbox"
@@ -238,7 +224,7 @@ export default function OnBoardPage() {
                 renderValue={(selected) => selected.join(', ')}
                 MenuProps={MenuProps}
                 >
-                {sortedData.map((name) => (
+                {sortedData?.map((name) => (
                     <MenuItem key={name} value={name}>
                     <Checkbox checked={langName.indexOf(name) > -1} />
                     <ListItemText primary={name} />
@@ -252,8 +238,8 @@ export default function OnBoardPage() {
                 </p> 
               </Grid>
               <Grid item xs={12}>
-              <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Select Role</InputLabel>
+              <FormControl sx={{ width: '100%' }}>
+              <InputLabel id="demo-simple-select-label">{SelectRole}</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -261,11 +247,13 @@ export default function OnBoardPage() {
                 label="Select Role"
                 onChange={handleRoleChange}
               >
-                <MenuItem value={10}>Founder</MenuItem>
-                <MenuItem value={20}>Engineer Lead</MenuItem>
-                <MenuItem value={30}>Product Lead</MenuItem>
-                <MenuItem value={30}>Sales</MenuItem>
-                <MenuItem value={30}>Engineer</MenuItem>
+                {options?.map(option => {
+                return (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label ?? option.value}
+                  </MenuItem>
+                );
+             })}
               </Select>
               </FormControl>
               </Grid>
