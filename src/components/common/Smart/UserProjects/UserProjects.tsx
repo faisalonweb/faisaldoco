@@ -13,7 +13,6 @@ const UserProjects = () => {
     const dispatch = useAppDispatch();
     const { search } = useLocation()
     const parsed = queryString.parse(search);
-    let storedtoken = localStorage.getItem('access_token');
     const { userRepos } = useAppSelector(
       (state) => state.userRepos
     );  
@@ -22,13 +21,9 @@ const UserProjects = () => {
     );  
     localStorage.setItem("code", parsed.code);
     useEffect(() => {
-      // dispatch(userInstallationsList())
-      // dispatch(userInstallationsParticularList())
       dispatch(userCode(parsed))
       dispatch(userToken())
-      // dispatch(userRepo())
-      
-    },[]);
+    });
     useEffect(() => {
       if(userAccessToken) {
       dispatch(userInstallationsList())
