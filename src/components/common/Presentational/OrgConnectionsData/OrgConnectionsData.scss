@@ -36,8 +36,8 @@
             margin-left: 16px !important;
             text-transform: capitalize;
             &:hover {
-             color: #fff;
-             background: #773cbd;
+             color: var(--color-background-hover);
+             background: var(--color-hover);
              }
         }
         .remove-btn {
@@ -52,8 +52,8 @@
             margin-left: 16px !important;
             text-transform: capitalize;
             &:hover {
-             color: #fff;
-             background: #773cbd;
+             color: var(--color-background-hover);
+             background: var(--color-hover);
              }
         }
     }

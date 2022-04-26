@@ -15,14 +15,14 @@ export default function ShareModal(props: Props) {
     const [description, setDescription] = useState("");
     const [descriptionError, setDescriptionError] = useState("");
 
-    const handleEmail = (event:any) => {
+    const handleEmail = (event:React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.value.length) {
           setEmailError("");
         }
         setEmail(event?.target?.value);
       };
     
-      const handleDescription = (event:any) => {
+      const handleDescription = (event:React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.value.length) {
           setDescriptionError("");
         }

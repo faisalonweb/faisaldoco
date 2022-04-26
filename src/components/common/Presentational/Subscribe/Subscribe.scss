@@ -22,7 +22,7 @@
         justify-content: center;
         font-family: 'Roboto';
         font-size: 24px;
-        color: grey;
+        color: var(--color-grey);
         p {
             margin-top: 5px;
             margin-bottom: 35px;
@@ -31,7 +31,7 @@
     .subscribe-section {
         width: 900px;
         height: 230px;
-        background-color: #F8F8F8;
+        background-color: var(--color-light-grey);
         border-radius: 5px;
         padding: 35px;
         display: flex;
@@ -51,7 +51,7 @@
                     font-family: 'Roboto';
                     font-size: 16px;
                     margin-top: 5px;
-                    color: grey;
+                    color:var(--color-grey);
                 }
             }
         }
@@ -73,7 +73,7 @@
                     font-size: 16px;
                     margin-top: 5px;
                     margin-bottom: 0px;
-                    color: grey;
+                    color:var(--color-grey);
                 }
             }
             .twitter-btn {

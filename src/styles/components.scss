@@ -2,8 +2,6 @@
 @import 'src/components/shared/Layout/Layout.scss';
 // SMART COMPONENTS
 
-@import 'src/components/common/Smart/LoginPage/LoginPage.scss';
-@import 'src/components/common/Smart/SignUpPage/SignUpPage.scss';
 @import 'src/components/common/Smart/Review/Review.scss';
 @import 'src/components/common/Smart/User/User.scss';
 @import 'src/components/common/Smart/ReviewSideBar/ReviewSideBar.scss';
@@ -13,10 +11,12 @@
 @import 'src/components/common/Smart/UserIntegration/UserIntegration.scss';
 @import 'src/components/common/Smart/UserProjects/UserProjects.scss';
 @import 'src/components/common/Smart/UserRightSideBar/UserRightSideBar.scss';
-@import 'src/components/common/Smart/OnBoardPage/OnBoardPage.scss';
 
 
 // PRESENTATIONAL COMPONENTS
+@import 'src/components/common/Presentational/LoginPage/LoginPage.scss';
+@import 'src/components/common/Presentational/SignUpPage/SignUpPage.scss';
+@import 'src/components/common/Presentational/OnBoardPage/OnBoardPage.scss';
 @import 'src/components/common/Presentational/OrgSideBar/OrgSideBar.scss';
 @import 'src/components/common/Presentational/UserInfo/UserInfo.scss';
 @import 'src/components/common/Presentational/UserSideBar/UserSideBar.scss';
