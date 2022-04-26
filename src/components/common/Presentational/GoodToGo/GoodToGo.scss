@@ -22,7 +22,7 @@
         justify-content: center;
         font-family: 'Roboto';
         font-size: 20px;
-        color: grey;
+        color: var(--color-grey)
         p {
             margin-top: 5px;
             margin-bottom: 35px;
@@ -44,7 +44,7 @@
            .contact-icon {
                width: 87%;
                margin-left: 0px;
-               color: gray;
+               color: var(--color-grey);
            }
           .contact-info {
               .tell-title {
@@ -54,7 +54,7 @@
               .tell-subtitle {
                 font-family: 'Roboto';
                 font-size: 15px;
-                color: gray;
+                color: var(--color-grey);
               }
           }
        }

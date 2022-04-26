@@ -20,7 +20,7 @@
         margin: 30px;
         width: 80%;
         height: 30%;
-        background-color: white;
+        background-color: var(--background-color) ;
         border-radius: 5px;
       .document-content {
           margin-top: 10px;
@@ -46,7 +46,7 @@
         margin: 30px;
         width: 80%;
         height: 40%;
-        background-color: white;
+        background-color: var(--background-color) ;
         border-radius: 5px;
        .project-content {
            margin-left: 35px;

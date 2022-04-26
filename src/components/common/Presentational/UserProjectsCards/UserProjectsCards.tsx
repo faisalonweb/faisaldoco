@@ -45,7 +45,7 @@ const UserProjectsCards = ({projectTitle, hosted, lastPublish }: props) => {
               </div>
             </Button>
             </div>
-            <CodebaseModal open={open} handleClose={handleClose}/>
+            <CodebaseModal projectInfo={projectTitle} userInfo={userInfo.login} open={open} handleClose={handleClose}/>
            <div className="hosted-section">
                <div className="hosted-link">
                <p>Hosted:</p>

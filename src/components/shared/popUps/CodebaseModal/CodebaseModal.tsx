@@ -3,14 +3,16 @@ import Dialog from "@mui/material/Dialog";
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import DialogContent from "@mui/material/DialogContent";
 import { Button} from "@mui/material";
 import "src/components/shared/popUps/PublishModal/PublishModal.scss";
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 interface Props {
   open: boolean;
   handleClose: () => void;
+  projectInfo: string | undefined;
+  userInfo: string;
 }
 
 export default function CodebaseModal(props: Props) {
@@ -19,7 +21,7 @@ export default function CodebaseModal(props: Props) {
     const resetModal = () => {
         props?.handleClose();
       };
-      const handleChange = (event:any) => {
+      const handleChange = (event: SelectChangeEvent<string>) => {
         setAge(event.target.value);
       };
 
@@ -29,10 +31,10 @@ export default function CodebaseModal(props: Props) {
         <div className="modal-content">
           <div>
           <div className="publish-heading">
-           <p>Project info - view project</p>
+           <p>Project Info - {props.projectInfo}</p>
           </div>
           <div className="code-link">
-          <p>Codebase link: github.com/repo</p>
+          <p>User Info: {props.userInfo}</p>
           </div>
           <div className="hoisting-service">
               <p>Hoisting service :</p>
