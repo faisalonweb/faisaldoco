@@ -9,18 +9,20 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import {useNavigate} from 'react-router-dom';
-import { useAppDispatch } from "src/store/hooks";
+// import {useNavigate} from 'react-router-dom';
+// import { useAppDispatch } from "src/store/hooks";
 import { localizedData } from "src/utils/helpers/language";
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
-import { logout } from 'src/store/reducers/userSlice'
+// import { logout } from 'src/store/reducers/userSlice'
+import { useAuth0 } from '@auth0/auth0-react'
 
 const ResponsiveAppBar = () => {
   const [anchorElUser, setAnchorElUser] = React.useState<Element | undefined | null>(null);
+  const { logout, isAuthenticated } = useAuth0();
   const constantData: LocalizationInterface = localizedData();
-  let result = JSON.parse(localStorage.getItem('test') || '{}')
-  let navigate = useNavigate();
-  const dispatch = useAppDispatch();
+  // let result = JSON.parse(localStorage.getItem('test') || '{}')
+  // let navigate = useNavigate();
+  // const dispatch = useAppDispatch();
   const { Profile, Account, Document, Logout } = constantData.appBar;
 
   const handleOpenUserMenu = (ev:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -31,8 +33,11 @@ const ResponsiveAppBar = () => {
   };
   const handleLogout = () => {
     setAnchorElUser(null);
-     dispatch(logout())
-     navigate('/')
+    //  dispatch(logout())
+    //  navigate('/')
+    if(isAuthenticated) {
+      logout()
+    }
   };
 
   return (
@@ -48,8 +53,7 @@ const ResponsiveAppBar = () => {
           >
             Documatic logo
           </Typography>
-          {
-            result.myBool ? (
+         
            <>  
           <div>
           <Typography
@@ -84,14 +88,10 @@ const ResponsiveAppBar = () => {
             Last Published: Datetime last published
           </Typography>
          </> 
-            ): (
-              ""
-            )
-          }
+           
           
           <Box sx={{ flexGrow: 0 }}>
-          {
-            result.myBool ? (
+        
                 <>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -128,10 +128,7 @@ const ResponsiveAppBar = () => {
               </MenuItem>
             </Menu>
                 </>
-            ): (
-              ""
-            )
-          }  
+            
           </Box>
         </Toolbar>
       </Container>
