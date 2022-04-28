@@ -10,9 +10,8 @@ export default function SignInSide() {
     if(!isAuthenticated) {
       loginWithRedirect()
     }
-    localStorage.setItem("useremail","default@gmail.com")
-    localStorage.setItem("userpassword","default12");
-  });
+  
+  },[]);
   
   return (
     <>

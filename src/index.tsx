@@ -12,7 +12,7 @@ const clientId:any = process.env.REACT_APP_AUTH0_CLIENT_ID;
 
 ReactDOM.render(
   <React.StrictMode>
-   <Auth0Provider domain={domain} clientId={clientId} redirectUri={`${window.location.origin}/review`}>
+   <Auth0Provider domain={domain} clientId={clientId} redirectUri={`${window.location.origin}/review`} audience="unique identifier" scope="openid profile email">
     <BrowserRouter>
     <Provider store={store}>
       <App />

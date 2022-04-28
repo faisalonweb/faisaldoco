@@ -51,7 +51,7 @@ function App() {
        <Route path="/goodtogo" element={<GoodToGoView/>}/>
        <Route path="/notpagefound" element={<NotFoundPage />} />
        {/* <Route path="*"  element={<LoggedRestrictedRouter component={PrivateRoute}/>}/> */}
-       <Route path="/review" element={<ProtectedRoute component={ReviewView}/>} />
+       <Route path="/review" element={<ReviewView/>} />
        <Route path="/user" element={<Navigate to="/user/info" />}/>
        <Route path="/user/info" element={<UserInfo />} />
        <Route path="/user/projects" element={<UserProjects />} />
