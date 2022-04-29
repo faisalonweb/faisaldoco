@@ -3,16 +3,20 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { Provider } from "react-redux";
 import { store } from 'src/store/store'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Navigate } from 'react-router-dom'
 import { Auth0Provider } from '@auth0/auth0-react'
+import Auth0ProviderWithHistory from 'src/auth/auth0-provider-with-history';
 
 const domain:any = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId:any = process.env.REACT_APP_AUTH0_CLIENT_ID;
 
+const onRedirectCallback = (appState:any) => {
+  Navigate(appState?.returnTo || window.location.pathname);
+};
 
 ReactDOM.render(
   <React.StrictMode>
-   <Auth0Provider domain={domain} clientId={clientId} redirectUri={`${window.location.origin}/review`} audience="unique identifier" scope="openid profile email">
+   <Auth0Provider domain={domain} clientId={clientId} redirectUri={`${window.location.origin}/review`} onRedirectCallback={onRedirectCallback} audience="unique identifier" scope="openid profile email">
     <BrowserRouter>
     <Provider store={store}>
       <App />

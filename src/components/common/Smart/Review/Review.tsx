@@ -6,7 +6,7 @@ const Review = () => {
     const { getAccessTokenSilently } = useAuth0();
     useEffect(() => {
     getToken();
-  });
+  },[]);
   
   const getToken = async() => {
    const token = await getAccessTokenSilently()

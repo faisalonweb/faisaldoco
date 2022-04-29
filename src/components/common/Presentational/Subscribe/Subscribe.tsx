@@ -24,11 +24,11 @@ const Subscribe = () => {
     const { userSignup } = useAppSelector(
         (state) => state.defaultUser
       );
-    useEffect(() => {
-        if(!userSignup) {
-          navigate('/signup')
-        }
-      });  
+    // useEffect(() => {
+    //     if(!userSignup) {
+    //       navigate('/signup')
+    //     }
+    //   });  
       const handleNav = () => {
         navigate('/goodtogo')
       };

@@ -24,11 +24,11 @@ const GoodToGo = () => {
     const { userSignup } = useAppSelector(
         (state) => state.defaultUser
       );
-    useEffect(() => {
-        if(!userSignup) {
-          navigate('/signup')
-        }
-      });  
+    // useEffect(() => {
+    //     if(!userSignup) {
+    //       navigate('/signup')
+    //     }
+    //   });  
    
     return (
         <div className="goodtogo-page">
