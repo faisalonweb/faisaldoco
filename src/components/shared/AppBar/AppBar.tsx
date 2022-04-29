@@ -9,20 +9,14 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-// import {useNavigate} from 'react-router-dom';
-// import { useAppDispatch } from "src/store/hooks";
 import { localizedData } from "src/utils/helpers/language";
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
-// import { logout } from 'src/store/reducers/userSlice'
 import { useAuth0 } from '@auth0/auth0-react'
 
 const ResponsiveAppBar = () => {
   const [anchorElUser, setAnchorElUser] = React.useState<Element | undefined | null>(null);
-  const { logout, isAuthenticated } = useAuth0();
+  const { logout } = useAuth0();
   const constantData: LocalizationInterface = localizedData();
-  // let result = JSON.parse(localStorage.getItem('test') || '{}')
-  // let navigate = useNavigate();
-  // const dispatch = useAppDispatch();
   const { Profile, Account, Document, Logout } = constantData.appBar;
 
   const handleOpenUserMenu = (ev:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -33,14 +27,10 @@ const ResponsiveAppBar = () => {
   };
   const handleLogout = () => {
     setAnchorElUser(null);
-    //  dispatch(logout())
-    //  navigate('/')
-    // if(isAuthenticated) {
       logout({
         localOnly: false,
         returnTo: window.location.origin
       })
-    // }
   };
 
   return (
