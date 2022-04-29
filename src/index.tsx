@@ -16,7 +16,7 @@ const onRedirectCallback = (appState:any) => {
 
 ReactDOM.render(
   <React.StrictMode>
-   <Auth0Provider domain={domain} clientId={clientId} redirectUri={`${window.location.origin}/review`} onRedirectCallback={onRedirectCallback} audience="unique identifier" scope="openid profile email">
+   <Auth0Provider domain={domain} clientId={clientId} redirectUri={`${window.location.origin}/review`} onRedirectCallback={onRedirectCallback} audience="unique identifier">
     <BrowserRouter>
     <Provider store={store}>
       <App />

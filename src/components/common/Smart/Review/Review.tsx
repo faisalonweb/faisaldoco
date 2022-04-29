@@ -3,10 +3,13 @@ import TextField from '@mui/material/TextField';
 import { useAuth0 } from '@auth0/auth0-react'
 
 const Review = () => {
-    const { getAccessTokenSilently } = useAuth0();
+    const { getAccessTokenSilently, isAuthenticated } = useAuth0();
     useEffect(() => {
-    getToken();
-  },[]);
+      console.log("About to fetch token", isAuthenticated)
+      if (isAuthenticated) {
+        getToken();
+      }
+  },[isAuthenticated]);
   
   const getToken = async() => {
    const token = await getAccessTokenSilently()

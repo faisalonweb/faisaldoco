@@ -35,9 +35,12 @@ const ResponsiveAppBar = () => {
     setAnchorElUser(null);
     //  dispatch(logout())
     //  navigate('/')
-    if(isAuthenticated) {
-      logout()
-    }
+    // if(isAuthenticated) {
+      logout({
+        localOnly: false,
+        returnTo: window.location.origin
+      })
+    // }
   };
 
   return (
