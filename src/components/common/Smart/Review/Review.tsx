@@ -3,34 +3,41 @@ import TextField from '@mui/material/TextField';
 import { useAuth0 } from '@auth0/auth0-react'
 
 const Review = () => {
-    const { getAccessTokenSilently, isAuthenticated } = useAuth0();
-    useEffect(() => {
-      console.log("About to fetch token", isAuthenticated)
-      if (isAuthenticated) {
-        getToken();
-      }
+  const { getAccessTokenSilently, isAuthenticated, isLoading } = useAuth0();
+  useEffect(() => {
+    if (isAuthenticated) {
+      getToken();
+    }
   },[isAuthenticated]);
   
   const getToken = async() => {
    const token = await getAccessTokenSilently()
-   console.log("token from auth0",token)
+   console.log(token);
    localStorage.setItem("access-token",token)
   }
-    
+
+  if (isLoading) {
     return (
-        <div className="review-page">
-           <TextField
-                className="full-field"
-                type="text"
-                variant="outlined"
-                placeholder="Document"
-                multiline
-                rows={35}
-                maxRows={40}
-                style = {{width: '60%'}}
-              />
-        </div>
-    );
+      <>
+        <h3>Loading...</h3>
+      </>
+      );
+  }
+    
+  return (
+    <div className="review-page">
+      <TextField
+          className="full-field"
+          type="text"
+          variant="outlined"
+          placeholder="Document"
+          multiline
+          rows={35}
+          maxRows={40}
+          style = {{width: '60%'}}
+        />
+    </div>
+  );
 };
 
 export default Review;

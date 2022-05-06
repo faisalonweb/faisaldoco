@@ -10,12 +10,17 @@ export default function SignInSide() {
     if(!isAuthenticated) {
       loginWithRedirect()
     }
-  
   },[]);
   
   return (
     <>
      <CssBaseline />
+     {/* <button
+      className="btn btn-primary btn-block"
+      onClick={() => loginWithRedirect()}
+    >
+      Log In
+    </button> */}
       </>
   );
 }
