@@ -12,8 +12,8 @@ import 'src/styles/theme/light.scss'
 import 'src/styles/theme/dark.scss'
 import { useAppSelector } from "src/store/hooks";
 import Layout from 'src/components/shared/Layout/Layout'
-import PrivateRoute from "src/routes/PrivateRoute";
-import LoggedRestrictedRouter from 'src/components/hoc/LoggedRestrictedRouter'
+// import PrivateRoute from "src/routes/PrivateRoute";
+// import LoggedRestrictedRouter from 'src/components/hoc/LoggedRestrictedRouter'
 import { ProtectedRoute } from "src/components/hoc/LoginRestrictedRouter";
 import NotFoundPage from 'src/components/shared/NotFoundPage/NotFoundPage'
 import ReviewView from 'src/views/ReviewView/ReviewView'
@@ -24,6 +24,7 @@ import UserProjects from 'src/components/common/Smart/UserProjects/UserProjects'
 import UserIntegration from 'src/components/common/Smart/UserIntegration/UserIntegration'
 import UserInfo from 'src/components/common/Presentational/UserInfo/UserInfo'
 import UserOrgs from 'src/components/common/Smart/UserOrgs/UserOrgs'
+import VerifyEmail from 'src/components/common/Presentational/VerifyEmail/VerifyEmail'
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
        <Route path="/subscribe" element={<SubscribeView/>}/>
        <Route path="/goodtogo" element={<GoodToGoView/>}/>
        <Route path="/notpagefound" element={<NotFoundPage />} />
+       <Route path="/verifyemail" element={<VerifyEmail />} />
        {/* <Route path="*"  element={<LoggedRestrictedRouter component={PrivateRoute}/>}/> */}
        <Route path="/review" element={<ReviewView/>} />
        <Route path="/user" element={<Navigate to="/user/info" />}/>

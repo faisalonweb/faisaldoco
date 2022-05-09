@@ -12,6 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { localizedData } from "src/utils/helpers/language";
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
 import { useAuth0 } from '@auth0/auth0-react'
+import DocumaticLogo from "src/assets/images/k4YTRD6.png";
 
 const ResponsiveAppBar = () => {
   const [anchorElUser, setAnchorElUser] = React.useState<Element | undefined | null>(null);
@@ -37,15 +38,19 @@ const ResponsiveAppBar = () => {
     <AppBar className="app-bar" position="static">
       <Container className="container-class" maxWidth="xl">
         <Toolbar className="toolbar-class" disableGutters>
+          <div className="documatic_logo">
+          <img src={DocumaticLogo} alt="Documatic Logo"/>
+          
           <Typography
-            className='documatic-logo'
+            className='documatic-text'
             variant="h6"
             noWrap
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            Documatic logo
+            Documatic
           </Typography>
+          </div>
          
            <>  
           <div>

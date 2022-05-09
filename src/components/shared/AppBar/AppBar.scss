@@ -7,6 +7,21 @@
             display: flex;
             margin: 0px 30px 0px 30px;
             justify-content: space-between;
+            .documatic_logo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .documatic-text {
+                    font-size: 20px;
+                    font-family: 'Roboto';
+                    font-weight: 400;
+                    margin-left: 10px;
+                }
+                img {
+                    height: 50px;
+                    width: 50px;
+                }
+            }
         }
     }
     .documatic-logo {
