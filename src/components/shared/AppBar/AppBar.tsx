@@ -13,9 +13,11 @@ import { localizedData } from "src/utils/helpers/language";
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
 import { useAuth0 } from '@auth0/auth0-react'
 import DocumaticLogo from "src/assets/images/k4YTRD6.png";
+import { useLocation } from "react-router-dom";
 
 const ResponsiveAppBar = () => {
   const [anchorElUser, setAnchorElUser] = React.useState<Element | undefined | null>(null);
+  const { pathname } = useLocation();
   const { logout } = useAuth0();
   const constantData: LocalizationInterface = localizedData();
   const { Profile, Account, Document, Logout } = constantData.appBar;
@@ -51,43 +53,45 @@ const ResponsiveAppBar = () => {
             Documatic
           </Typography>
           </div>
-         
-           <>  
-          <div>
-          <Typography
-            className='project-name'
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-          >
-            Project Name
-          </Typography> 
-          <Typography 
-            className='publish-name'
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
-              
-           Published to: Link to published docs
-          </Typography>
-          </div>  
-         
-          <Typography
-            className='last-publish'
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-          >
-            
-            <br/>
-            Last Published: Datetime last published
-          </Typography>
-         </> 
-           
-          
+
+          {
+            pathname !== '/notpagefound' && pathname !== '/verifyemail' ? (
+              <>  
+              <div>
+              <Typography
+                className='project-name'
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+              >
+                Project Name
+              </Typography> 
+              <Typography 
+                className='publish-name'
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
+                  
+               Published to: Link to published docs
+              </Typography>
+              </div>  
+             
+              <Typography
+                className='last-publish'
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+              >
+                
+                <br/>
+                Last Published: Datetime last published
+              </Typography>
+             </> 
+            ): ''
+          }
           <Box sx={{ flexGrow: 0 }}>
         
                 <>

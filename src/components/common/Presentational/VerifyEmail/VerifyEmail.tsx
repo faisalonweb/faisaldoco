@@ -2,7 +2,7 @@ import React from 'react'
 
  const VerifyEmail = () => {
     return (
-        <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
+        <div className="verify-email">
             Kindly verify your email.
         </div>
     )
