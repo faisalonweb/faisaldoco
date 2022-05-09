@@ -9,18 +9,17 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import {useNavigate} from 'react-router-dom';
-import { useAppDispatch } from "src/store/hooks";
 import { localizedData } from "src/utils/helpers/language";
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
-import { logout } from 'src/store/reducers/userSlice'
+import { useAuth0 } from '@auth0/auth0-react'
+import DocumaticLogo from "src/assets/images/k4YTRD6.png";
+import { useLocation } from "react-router-dom";
 
 const ResponsiveAppBar = () => {
   const [anchorElUser, setAnchorElUser] = React.useState<Element | undefined | null>(null);
+  const { pathname } = useLocation();
+  const { logout } = useAuth0();
   const constantData: LocalizationInterface = localizedData();
-  let result = JSON.parse(localStorage.getItem('test') || '{}')
-  let navigate = useNavigate();
-  const dispatch = useAppDispatch();
   const { Profile, Account, Document, Logout } = constantData.appBar;
 
   const handleOpenUserMenu = (ev:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -31,67 +30,70 @@ const ResponsiveAppBar = () => {
   };
   const handleLogout = () => {
     setAnchorElUser(null);
-     dispatch(logout())
-     navigate('/')
+      logout({
+        localOnly: false,
+        returnTo: window.location.origin
+      })
   };
 
   return (
     <AppBar className="app-bar" position="static">
       <Container className="container-class" maxWidth="xl">
         <Toolbar className="toolbar-class" disableGutters>
-          <Typography
-            className='documatic-logo'
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-          >
-            Documatic logo
-          </Typography>
-          {
-            result.myBool ? (
-           <>  
-          <div>
-          <Typography
-            className='project-name'
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-          >
-            Project Name
-          </Typography> 
-          <Typography 
-            className='publish-name'
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
-              
-           Published to: Link to published docs
-          </Typography>
-          </div>  
-         
-          <Typography
-            className='last-publish'
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-          >
-            
-            <br/>
-            Last Published: Datetime last published
-          </Typography>
-         </> 
-            ): (
-              ""
-            )
-          }
+          <div className="documatic_logo">
+          <img src={DocumaticLogo} alt="Documatic Logo"/>
           
-          <Box sx={{ flexGrow: 0 }}>
+          <Typography
+            className='documatic-text'
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+          >
+            Documatic
+          </Typography>
+          </div>
+
           {
-            result.myBool ? (
+            pathname !== '/notpagefound' && pathname !== '/verifyemail' ? (
+              <>  
+              <div>
+              <Typography
+                className='project-name'
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+              >
+                Project Name
+              </Typography> 
+              <Typography 
+                className='publish-name'
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
+                  
+               Published to: Link to published docs
+              </Typography>
+              </div>  
+             
+              <Typography
+                className='last-publish'
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+              >
+                
+                <br/>
+                Last Published: Datetime last published
+              </Typography>
+             </> 
+            ): ''
+          }
+          <Box sx={{ flexGrow: 0 }}>
+        
                 <>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -128,10 +130,7 @@ const ResponsiveAppBar = () => {
               </MenuItem>
             </Menu>
                 </>
-            ): (
-              ""
-            )
-          }  
+            
           </Box>
         </Toolbar>
       </Container>

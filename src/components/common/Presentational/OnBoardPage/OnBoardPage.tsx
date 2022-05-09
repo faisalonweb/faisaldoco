@@ -49,11 +49,11 @@ export default function OnBoardPage() {
   const constantData: LocalizationInterface = localizedData();
   const { onBoard, SelectLanguage, SelectRole} = constantData.onBoardPage;
 
-  React.useEffect(() => {
-    if(!userSignup) {
-      navigate('/signup')
-    }
-  });
+  // React.useEffect(() => {
+  //   if(!userSignup) {
+  //     navigate('/signup')
+  //   }
+  // });
   const handleRoleChange = (event: SelectChangeEvent<string>) => {
     setRole(event.target.value);
   };

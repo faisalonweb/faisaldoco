@@ -23,11 +23,11 @@ const Invitecoworkers = () => {
     const handleRoleChange = (event: SelectChangeEvent<string>) => {
         setRole(event.target.value);
       };
-      useEffect(() => {
-        if(!userSignup) {
-          navigate('/signup')
-        }
-      });  
+      // useEffect(() => {
+      //   if(!userSignup) {
+      //     navigate('/signup')
+      //   }
+      // });  
       const handleNav = () => {
         navigate('/subscribe')
       };

@@ -26,10 +26,12 @@
 @import 'src/components/common/Presentational/Invitecoworkers/Invitecoworkers.scss';
 @import 'src/components/common/Presentational/Subscribe/Subscribe.scss';
 @import 'src/components/common/Presentational/GoodToGo/GoodToGo.scss';
+@import 'src/components/common/Presentational/VerifyEmail/VerifyEmail.scss';
 // shared
 @import 'src/components/shared/AppBar/AppBar.scss';
 @import 'src/components/shared/RightAppBar/RightAppBar.scss';
 @import 'src/components/shared/LeftAppBar/LeftAppBar.scss';
+@import 'src/components/shared/Loader/loader.scss';
 // Popups
 
 @import 'src/components/shared/popUps/PublishModal/PublishModal.scss';
