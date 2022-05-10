@@ -21,7 +21,7 @@ const Layout = ({ children }: LayoutProps) => {
       <AppBar />
       <div className="inner-layout">
       {
-        pathname !== '/notpagefound' && pathname !== '/verifyemail' && pathname !== "/onboarding"  &&  pathname !== "/subscribe" && pathname !== "/goodtogo" ? (
+        pathname !== '/notpagefound' && pathname !== '/verifyemail' && pathname !== "/onboarding"  &&  pathname !== "/subscribe" && pathname !== "/goodtogo" && pathname !== "/invite" ? (
           <>
           <LeftAppBar />
           <RightAppBar />

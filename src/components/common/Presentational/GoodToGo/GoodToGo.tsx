@@ -28,7 +28,11 @@ const GoodToGo = () => {
     //     if(!userSignup) {
     //       navigate('/signup')
     //     }
-    //   });  
+    //   }); 
+    const handleNav = () => {
+        navigate('/review')
+      };
+     
    
     return (
         <div className="goodtogo-page">
@@ -73,6 +77,7 @@ const GoodToGo = () => {
                     className="documatic"
                     type="submit"
                     variant="contained"
+                    onClick={handleNav}
                     sx={{ mt: 3, mb: 2 }}
                    >
                     {Open_Documatic}

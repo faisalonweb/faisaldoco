@@ -93,7 +93,7 @@ export default function OnBoardPage() {
     handleErrors()
     if(verifyErrors()) {
       const data = new FormData(event.currentTarget);
-      dispatch(userRegister(firstname,lastname,company))
+      dispatch(userRegister(firstname,lastname,company, langName,role))
     console.log({
       firstName: data.get('firstName'),
       lastName: data.get('lastName'),
@@ -262,7 +262,7 @@ export default function OnBoardPage() {
               type="submit"
               fullWidth
               variant="contained"
-              // onClick={handleNav}
+              onClick={handleNav}
               sx={{ mt: 3, mb: 2 }}
             >
                Submit

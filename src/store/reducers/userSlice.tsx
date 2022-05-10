@@ -4,6 +4,7 @@ import { getUserInstallationAPI } from 'src/services/UserInstallationApi/UserIns
 import { getUserParticularInstallationAPI } from 'src/services/UserParticularInstallationApi/UserParticularInstallationApi'
 import { UserVerifyAPI } from 'src/services/UserVerify/UserVerify'
 import { UserRegisterAPI } from 'src/services/UserRegister/UserRegister'
+import { languageList } from 'src/utils/constants/constant'
 
 // Slice
 let storeMe = {
@@ -21,6 +22,7 @@ const slice = createSlice({
     userSignup:false,
     userVerify: '',
     userVerifyErr: '',
+    userRegisterErr: '',
     isAuth: loggedUser ? true: false,
     projects: [
       {
@@ -80,7 +82,6 @@ integration: [
     },
     UserRegisterSuccess: (state,action) =>  {
       state.userRegisterData = action.payload;
-      state.isAuth = false;
       
     },
     changeUserSignup: (state) => {
@@ -92,6 +93,10 @@ integration: [
     verifyUserErr: (state,action) => {
       state.userVerifyErr = action.payload;
       localStorage.setItem('VerifyError', action.payload)
+    },
+    userRegistrationErr:(state,action) => {
+      state.userRegisterErr = action.payload;
+      localStorage.setItem('RegisterErr', action.payload)
     },
     setUserErrorMsg: (state,action) => {
       state.loginError = action.payload;
@@ -110,7 +115,7 @@ export default slice.reducer
 
 // Actions
 
-const { loginSuccess,logoutSuccess,UserRegisterSuccess, changeUserSignup, setUserErrorMsg, userInstallations,userParticularInstallations, verifyUser, verifyUserErr } = slice.actions
+const { loginSuccess,logoutSuccess,UserRegisterSuccess,userRegistrationErr, changeUserSignup, setUserErrorMsg, userInstallations,userParticularInstallations, verifyUser, verifyUserErr } = slice.actions
 
 export const login = ( email:string, password:string) => async (dispatch: any) => {
   
@@ -121,13 +126,13 @@ export const login = ( email:string, password:string) => async (dispatch: any) =
     dispatch(setUserErrorMsg(e))
   }
 }
-export const userRegister = (firstname:string,lastname:string,company:string) => async (dispatch: any) => {
-  
+export const userRegister = (firstname:string,lastname:string,company:string, languageList:string[], role:string) => async (dispatch: any) => {
+  var obj = {StatusCode : "409", msg : "User already registered"};
   try {
-   await UserRegisterAPI(firstname,lastname,company)
-    dispatch(UserRegisterSuccess({firstname,lastname,company}));
+   await UserRegisterAPI(firstname,lastname,company, languageList,role)
+    dispatch(UserRegisterSuccess({firstname,lastname,company,languageList,role}));
   } catch (e) {
-    dispatch(setUserErrorMsg(e))
+    dispatch(userRegistrationErr(obj.StatusCode))
   }
 }
 export const logout = () => async (dispatch: any) => {

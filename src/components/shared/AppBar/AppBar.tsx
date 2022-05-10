@@ -56,7 +56,7 @@ const ResponsiveAppBar = () => {
           </div>
 
           {
-            pathname !== '/notpagefound' && pathname !== '/verifyemail' && pathname !== "/onboarding"  &&  pathname !== "/subscribe" && pathname !== "/goodtogo" ? (
+            pathname !== '/notpagefound' && pathname !== '/verifyemail' && pathname !== "/onboarding"  &&  pathname !== "/subscribe" && pathname !== "/goodtogo" && pathname !== "/invite" ? (
               <>  
               <div>
               <Typography
