@@ -2,6 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 import { LoginAPI } from 'src/services/LoginApi/LoginApi'
 import { getUserInstallationAPI } from 'src/services/UserInstallationApi/UserInstallationApi'
 import { getUserParticularInstallationAPI } from 'src/services/UserParticularInstallationApi/UserParticularInstallationApi'
+import { UserVerifyAPI } from 'src/services/UserVerify/UserVerify'
+import { UserRegisterAPI } from 'src/services/UserRegister/UserRegister'
 
 // Slice
 let storeMe = {
@@ -13,9 +15,12 @@ const slice = createSlice({
   initialState: {
     user: null,
     loginError:'',
+    userRegisterData:'',
     userInstallations: [] as any,
     userParticularInstallations: [] as any,
     userSignup:false,
+    userVerify: '',
+    userVerifyErr: '',
     isAuth: loggedUser ? true: false,
     projects: [
       {
@@ -73,8 +78,20 @@ integration: [
       // localStorage.removeItem('code')
       // localStorage.removeItem('access_token')
     },
+    UserRegisterSuccess: (state,action) =>  {
+      state.userRegisterData = action.payload;
+      state.isAuth = false;
+      
+    },
     changeUserSignup: (state) => {
       state.userSignup = true;
+    },
+    verifyUser: (state,action) => {
+      state.userVerify = JSON.stringify(action.payload);
+    },
+    verifyUserErr: (state,action) => {
+      state.userVerifyErr = action.payload;
+      localStorage.setItem('VerifyError', action.payload)
     },
     setUserErrorMsg: (state,action) => {
       state.loginError = action.payload;
@@ -93,7 +110,7 @@ export default slice.reducer
 
 // Actions
 
-const { loginSuccess,logoutSuccess, changeUserSignup, setUserErrorMsg, userInstallations,userParticularInstallations } = slice.actions
+const { loginSuccess,logoutSuccess,UserRegisterSuccess, changeUserSignup, setUserErrorMsg, userInstallations,userParticularInstallations, verifyUser, verifyUserErr } = slice.actions
 
 export const login = ( email:string, password:string) => async (dispatch: any) => {
   
@@ -104,8 +121,26 @@ export const login = ( email:string, password:string) => async (dispatch: any) =
     dispatch(setUserErrorMsg(e))
   }
 }
+export const userRegister = (firstname:string,lastname:string,company:string) => async (dispatch: any) => {
+  
+  try {
+   await UserRegisterAPI(firstname,lastname,company)
+    dispatch(UserRegisterSuccess({firstname,lastname,company}));
+  } catch (e) {
+    dispatch(setUserErrorMsg(e))
+  }
+}
 export const logout = () => async (dispatch: any) => {
    dispatch(logoutSuccess())
+}
+export const verifyUserIdentity = () => async (dispatch: any) => {
+  var obj = {StatusCode : "403", msg : "User not registered"};
+  try {
+    const {data} = await UserVerifyAPI()
+    dispatch(verifyUser(data));
+  } catch (e) {
+    dispatch(verifyUserErr(obj.StatusCode));
+  }
 }
 export const signupauth = () => async (dispatch: any) => {
   dispatch(changeUserSignup())

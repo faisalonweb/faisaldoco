@@ -30,6 +30,7 @@ const ResponsiveAppBar = () => {
   };
   const handleLogout = () => {
     setAnchorElUser(null);
+    localStorage.removeItem('VerifyError')
       logout({
         localOnly: false,
         returnTo: window.location.origin
@@ -55,7 +56,7 @@ const ResponsiveAppBar = () => {
           </div>
 
           {
-            pathname !== '/notpagefound' && pathname !== '/verifyemail' ? (
+            pathname !== '/notpagefound' && pathname !== '/verifyemail' && pathname !== "/onboarding"  &&  pathname !== "/subscribe" && pathname !== "/goodtogo" ? (
               <>  
               <div>
               <Typography

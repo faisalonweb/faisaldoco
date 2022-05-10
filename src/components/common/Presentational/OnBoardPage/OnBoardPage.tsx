@@ -20,6 +20,8 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
 import { localizedData } from "src/utils/helpers/language";
 import { languageList, options } from "src/utils/constants/constant";
+import  { userRegister } from 'src/store/reducers/userSlice'
+import { useAppDispatch } from "src/store/hooks";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -41,6 +43,7 @@ export default function OnBoardPage() {
   const [langName, setLangName] = React.useState<string[]>([]);
   const [langError, setLangError] = React.useState("");
   const [role, setRole] = React.useState('');
+  const dispatch = useAppDispatch();
   let navigate = useNavigate();
   const sortedData = languageList.sort((a, b) => a.localeCompare(b))
   const { userSignup } = useAppSelector(
@@ -49,11 +52,6 @@ export default function OnBoardPage() {
   const constantData: LocalizationInterface = localizedData();
   const { onBoard, SelectLanguage, SelectRole} = constantData.onBoardPage;
 
-  // React.useEffect(() => {
-  //   if(!userSignup) {
-  //     navigate('/signup')
-  //   }
-  // });
   const handleRoleChange = (event: SelectChangeEvent<string>) => {
     setRole(event.target.value);
   };
@@ -91,9 +89,11 @@ export default function OnBoardPage() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("lang names",langName)
+    console.log("role names",role)
     handleErrors()
     if(verifyErrors()) {
       const data = new FormData(event.currentTarget);
+      dispatch(userRegister(firstname,lastname,company))
     console.log({
       firstName: data.get('firstName'),
       lastName: data.get('lastName'),
@@ -262,7 +262,7 @@ export default function OnBoardPage() {
               type="submit"
               fullWidth
               variant="contained"
-              onClick={handleNav}
+              // onClick={handleNav}
               sx={{ mt: 3, mb: 2 }}
             >
                Submit
