@@ -19,7 +19,6 @@ const Review = () => {
       if(user?.email_verified) {
         dispatch(verifyUserIdentity())
         if(ErrorCode === '404' || statusCode === '404') {
-          console.log("err status", ErrorCode)
           navigate('/onboarding')
         }
         getToken();
