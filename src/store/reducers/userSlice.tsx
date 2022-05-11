@@ -16,6 +16,8 @@ const slice = createSlice({
   initialState: {
     user: null,
     loginError:'',
+    statusCode: '404',
+    statusMsg: 'user are not registered',
     userRegisterData:'',
     userInstallations: [] as any,
     userParticularInstallations: [] as any,
@@ -90,9 +92,9 @@ integration: [
     verifyUser: (state,action) => {
       state.userVerify = JSON.stringify(action.payload);
     },
-    verifyUserErr: (state,action) => {
-      state.userVerifyErr = action.payload;
-      localStorage.setItem('VerifyError', action.payload)
+    verifyUserErr: (state) => {
+      state.statusCode = '200';
+      localStorage.setItem('VerifyError', '200')
     },
     userRegistrationErr:(state,action) => {
       state.userRegisterErr = action.payload;
@@ -139,12 +141,12 @@ export const logout = () => async (dispatch: any) => {
    dispatch(logoutSuccess())
 }
 export const verifyUserIdentity = () => async (dispatch: any) => {
-  var obj = {StatusCode : "403", msg : "User not registered"};
+  // var obj = {StatusCode: "404", msg: "User not registered"};
   try {
     const {data} = await UserVerifyAPI()
     dispatch(verifyUser(data));
   } catch (e) {
-    dispatch(verifyUserErr(obj.StatusCode));
+    dispatch(verifyUserErr());
   }
 }
 export const signupauth = () => async (dispatch: any) => {

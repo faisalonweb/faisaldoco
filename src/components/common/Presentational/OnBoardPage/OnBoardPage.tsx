@@ -22,6 +22,7 @@ import { localizedData } from "src/utils/helpers/language";
 import { languageList, options } from "src/utils/constants/constant";
 import  { userRegister } from 'src/store/reducers/userSlice'
 import { useAppDispatch } from "src/store/hooks";
+import DocumaticLogo from "src/assets/images/k4YTRD6.png";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -159,9 +160,9 @@ export default function OnBoardPage() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-          <CheckCircleOutlineOutlinedIcon />    
-          </Avatar>
+          <div className="documatic-logo">
+          <img src={DocumaticLogo} alt="Documatic Logo"/>  
+          </div>
           <Typography component="h1" variant="h5">
             {onBoard}
           </Typography>
@@ -265,7 +266,7 @@ export default function OnBoardPage() {
               onClick={handleNav}
               sx={{ mt: 3, mb: 2 }}
             >
-               Submit
+               Continue
             </Button>
           </Box>
         </Box>

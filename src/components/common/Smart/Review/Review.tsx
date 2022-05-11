@@ -11,19 +11,17 @@ const Review = () => {
   const dispatch = useAppDispatch();
   let ErrorCode = localStorage.getItem('VerifyError');
   let navigate = useNavigate();
-  const { userVerifyErr } = useAppSelector(
+  const { statusCode } = useAppSelector(
     (state) => state.defaultUser
   );
   useEffect(() => {
-    // console.log("user data is and isauth", user, isAuthenticated)
     if (isAuthenticated) {
       if(user?.email_verified) {
         dispatch(verifyUserIdentity())
-        if(ErrorCode === '404' || userVerifyErr === '404') {
+        if(ErrorCode === '404' || statusCode === '404') {
           console.log("err status", ErrorCode)
           navigate('/onboarding')
         }
-        // console.log("user data is and isauth", user, isAuthenticated)
         getToken();
       }
       else {
@@ -34,7 +32,7 @@ const Review = () => {
       navigate('/verifyemail')
     }
     
-  },[isAuthenticated, isLoading, userVerifyErr]);
+  },[isAuthenticated, isLoading]);
   
   const getToken = async() => {
    const token = await getAccessTokenSilently()

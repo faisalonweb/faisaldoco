@@ -7,10 +7,12 @@ import {useNavigate} from 'react-router-dom';
 import { useAppSelector } from "src/store/hooks";
 import { LocalizationInterface } from 'src/utils/interfaces/localizationinterfaces'
 import { localizedData } from "src/utils/helpers/language";
+import { useAppDispatch } from "src/store/hooks";
 
 
 const GoodToGo = () => {
     const constantData: LocalizationInterface = localizedData();
+    const dispatch = useAppDispatch();
     const { Title, 
             Subtitle,
             Tell_Title, 
